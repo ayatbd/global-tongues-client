@@ -1,9 +1,11 @@
+import Banner from "./Banner";
+
 const Home = () => {
   return (
     <div>
-      {/* <Banner />
+      <Banner />
       <Animation />
-      <PopularClasses />
+      {/* <PopularClasses />
       <PopularInstructors />
       <StudentFeedback /> */}
     </div>

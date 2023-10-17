@@ -1,4 +1,5 @@
 /* eslint-disable no-unused-vars */
+import logo from "../../assets/images/logo.png";
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../provider/AuthProvider";
 import { Link, useLocation, useNavigate } from "react-router-dom";
@@ -95,7 +96,13 @@ const Navbar = () => {
           </ul>
         </div>
         <Link className="ml-2 text-white font-bold normal-case text-xl hidden md:inline">
-          Global<span className="text-red-500">Tongues</span>
+          <p className="flex items-center justify-center gap-3">
+            <img className="w-12 h-10" src={logo} />
+            <p>
+              Global
+              <span className="text-red-500">Tongues</span>
+            </p>
+          </p>
         </Link>
       </div>
       <div className="md:hidden">
