@@ -7,7 +7,7 @@ import { RxDashboard } from "react-icons/rx";
 import { BsFillBrightnessHighFill, BsMoonStarsFill } from "react-icons/bs";
 import Swal from "sweetalert2";
 import useTheme from "../../hooks/useTheme";
-import Headroom from "react-headroom";
+// import Headroom from "react-headroom";
 
 const Navbar = () => {
   const { user, logOut } = useContext(AuthContext);
