@@ -1,3 +1,4 @@
+import Animation from "./Animation";
 import Banner from "./Banner";
 
 const Home = () => {
