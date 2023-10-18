@@ -2,6 +2,9 @@ import { createBrowserRouter } from "react-router-dom";
 import Main from "../layouts/Main/Main";
 import ErrorPage from "../components/ErrorPage";
 import Home from "../pages/Home/Home";
+import Login from "../pages/pages/Login";
+import Register from "../pages/pages/Register";
+import About from "../pages/Pages/About/About";
 
 export const router = createBrowserRouter([
   {
@@ -13,34 +16,26 @@ export const router = createBrowserRouter([
         path: "/",
         element: <Home></Home>,
       },
-      //   {
-      //     path: "navbar",
-      //     element: <Navbar></Navbar>,
-      //   },
-      //   {
-      //     path: "footer",
-      //     element: <Footer></Footer>,
-      //   },
-      //   {
-      //     path: "login",
-      //     element: <Login></Login>,
-      //   },
-      //   {
-      //     path: "register",
-      //     element: <Register></Register>,
-      //   },
-      //   {
-      //     path: "classes",
-      //     element: <Classes></Classes>,
-      //   },
-      //   {
-      //     path: "instructors",
-      //     element: <Instructors></Instructors>,
-      //   },
-      //   {
-      //     path: "about",
-      //     element: <About></About>,
-      //   },
+      {
+        path: "login",
+        element: <Login></Login>,
+      },
+      {
+        path: "register",
+        element: <Register></Register>,
+      },
+      // {
+      //   path: "classes",
+      //   element: <Classes></Classes>,
+      // },
+      // {
+      //   path: "instructors",
+      //   element: <Instructors></Instructors>,
+      // },
+      {
+        path: "about",
+        element: <About></About>,
+      },
     ],
   },
   //   {

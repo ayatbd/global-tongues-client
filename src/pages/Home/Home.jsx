@@ -1,5 +1,6 @@
 import Animation from "./Animation";
 import Banner from "./Banner";
+import ChooseSection from "./ChooseSection";
 import StudentFeedback from "./StudentFeedback";
 
 const Home = () => {
@@ -9,6 +10,7 @@ const Home = () => {
       <Animation />
       {/* <PopularClasses />
       <PopularInstructors /> */}
+      <ChooseSection />
       <StudentFeedback />
     </div>
   );

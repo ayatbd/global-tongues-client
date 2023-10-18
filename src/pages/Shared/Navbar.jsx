@@ -140,7 +140,7 @@ const Navbar = () => {
             <li>
               <Link
                 to="/login"
-                className={`text-white hidden md:block font-medium py-2 px-4 rounded-md bg-indigo-600 hover:bg-indigo-700 ${
+                className={`text-red-500 hidden md:block font-medium py-2 px-4 rounded-md bg-indigo-600 hover:bg-indigo-700 ${
                   isDarkMode && "bg-gray-900"
                 }`}
               >
