@@ -6,9 +6,9 @@ import Footer from "../../pages/Shared/Footer";
 // import "aos/dist/aos.css";
 
 const Main = () => {
-  //   useEffect(() => {
-  //     AOS.init();
-  //   }, []);
+  // useEffect(() => {
+  //   AOS.init();
+  // }, []);
   return (
     <div>
       <Navbar></Navbar>

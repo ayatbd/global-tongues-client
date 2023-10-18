@@ -18,9 +18,6 @@ const AboutUs = () => {
           ></img>
         </div>
         <div className="space-y-4 px-2 md:px-0">
-          <p className="text-primary font-kanit font-semibold text-lg">
-            About Us
-          </p>
           <h1
             className={`text-2xl md:text-4xl font-bold duration-500 ${
               isDarkMode ? "text-gray-200" : "text-black"

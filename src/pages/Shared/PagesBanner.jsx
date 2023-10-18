@@ -1,21 +1,22 @@
 import useTheme from "../../hooks/useTheme";
+import "../../index.css";
 
 /* eslint-disable react/prop-types */
 const PagesBanner = ({ img, title }) => {
   const { isDarkMode } = useTheme();
   return (
     <div
-      className={`h-[45vh] w-full overflow-hidden ${
+      className={`h-[40vh] w-full overflow-hidden ${
         isDarkMode ? "bg-gray-500" : "banner-img"
       } pt-14 md:pt-40`}
     >
       <div className="max-container relative w-full h-full">
         <img
-          className="absolute bottom-0 -right-14 md:-right-10"
+          className="absolute bottom-5 -right-14 md:-right-10"
           src={img}
           alt=""
         />
-        <div className="pl-5 md:pl-10">
+        <div className="text-center">
           <h1
             className={`text-3xl font-kanit font-extrabold ${
               isDarkMode ? "text-gray-100" : "text-black"
