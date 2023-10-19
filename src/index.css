@@ -66,7 +66,7 @@ body {
 
 /* page banner image  */
 .banner-img {
-    background-image: url(../src/assets/images/img18.png);
+    background-image: url(../src/assets/images/gradient1.png), url(../src/assets/images/img18.png);
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
@@ -81,3 +81,5 @@ choose section css .choose-img {
     background-image: linear-gradient(to right top, rgba(79, 70, 229, 0.2) 0%, transparent 50%, transparent 100%);
     border-color: rgba(92, 79, 240, 0.2);
 }
+
+/* login and register page  */

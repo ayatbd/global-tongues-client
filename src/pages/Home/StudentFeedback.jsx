@@ -15,7 +15,7 @@ const StudentFeedback = () => {
     AOS.init();
   }, []);
   return (
-    <div className={`pb-28 ${isDarkMode && "bg-gray-900"}`}>
+    <div className={` ${isDarkMode && "bg-gray-900"}`}>
       {/*
   Heads up! 👋
 
