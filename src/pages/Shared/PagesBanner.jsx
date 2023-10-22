@@ -19,7 +19,7 @@ const PagesBanner = ({ img, title }) => {
         <div className="text-center">
           <h1
             className={`text-3xl font-kanit font-extrabold ${
-              isDarkMode ? "text-gray-100" : "text-black"
+              isDarkMode ? "text-gray-100" : "text-red-700"
             }`}
           >
             {title}

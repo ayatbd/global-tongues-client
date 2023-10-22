@@ -31,7 +31,7 @@ const Dashboard = () => {
             Open drawer
           </label>
         </div>
-        <div className="drawer-side bg-blue-600">
+        <div className="drawer-side bg-indigo-800">
           <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
           <div>
             <div className="mt-3 hidden md:block">
@@ -40,10 +40,10 @@ const Dashboard = () => {
                 src={user?.photoURL}
                 alt=""
               />
-              <h1 className="text-lg font-extrabold text-center font-kanit">
+              <h1 className="text-lg text-white font-extrabold text-center font-kanit">
                 {user?.displayName}
               </h1>
-              <p className="text-xs font-bold font-kanit text-center">
+              <p className="text-xs text-white font-bold font-kanit text-center">
                 {user?.email}
               </p>
             </div>

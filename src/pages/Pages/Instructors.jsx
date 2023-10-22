@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import img from "../../assets/images/img20.png";
 import { FaEnvelope } from "react-icons/fa";
 import Loader from "../Shared/Loader";
 import PagesBanner from "../Shared/PagesBanner";
@@ -23,7 +22,7 @@ const Instructors = () => {
   }
   return (
     <div className="">
-      <PagesBanner img={img} title="Choose Your Best Tutor"></PagesBanner>
+      <PagesBanner title="Instructors"></PagesBanner>
       <div className="my-10 grid grid-cols-1 md:grid-cols-2 gap-10 overflow-hidden">
         {instructors.map((instructor) => (
           <div

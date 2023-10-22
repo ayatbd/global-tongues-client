@@ -83,3 +83,12 @@ choose section css .choose-img {
 }
 
 /* login and register page  */
+
+/* banner section css  */
+
+.banner-bg-img {
+    background-image: url(../src/assets/images/img26.jpg);
+}
+
+/* popular classe section  */
+.img-layer {}

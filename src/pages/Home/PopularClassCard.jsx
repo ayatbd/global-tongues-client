@@ -2,14 +2,14 @@
 import { useContext, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
-import "../../index.css";
 import { AuthContext } from "../../provider/AuthProvider";
+import useTheme from "../../hooks/useTheme";
 import useAdmin from "../../hooks/useAdmin";
 import useInstructor from "../../hooks/useInstructor";
 import { AiFillStar } from "react-icons/ai";
-import useTheme from "../../hooks/useTheme";
+import "../../index.css";
 
-const ClassCard = ({ classData }) => {
+const PopularClassCard = ({ classData }) => {
   const { user } = useContext(AuthContext);
   const { isDarkMode } = useTheme();
 
@@ -70,8 +70,6 @@ const ClassCard = ({ classData }) => {
       });
     }
   };
-
-  // const arr = [];
 
   return (
     <div
@@ -155,4 +153,4 @@ const ClassCard = ({ classData }) => {
   );
 };
 
-export default ClassCard;
+export default PopularClassCard;

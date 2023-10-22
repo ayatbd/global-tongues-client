@@ -1,7 +1,9 @@
 import { useQuery } from "@tanstack/react-query";
 import Swal from "sweetalert2";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
-import { FaUser } from "react-icons/fa";
+import { RiAdminFill } from "react-icons/ri";
+import { FaChalkboardTeacher } from "react-icons/fa";
+import { BiSolidUser } from "react-icons/bi";
 
 const ManageUser = () => {
   const [axiosSecure] = useAxiosSecure();
@@ -64,37 +66,51 @@ const ManageUser = () => {
   };
 
   return (
-    <div className="overflow-x-auto w-full">
-      <div className="table-responsive">
-        <table className="table">
-          {/* head */}
-          <thead>
-            <tr>
-              <th className="text-center hidden md:inline">Picture</th>
-              <th className="text-center">Name</th>
-              <th className="text-center">Email</th>
-              <th className="text-center">Role</th>
-            </tr>
-          </thead>
-          <tbody>
-            {/* row 1 */}
-            {users.map((user) => (
-              <tr key={user.email}>
-                <td className="hidden md:inline">
-                  <div className="flex items-center space-x-3">
-                    <div className="avatar">
-                      <div className="mask mask-squircle w-12 h-12">
-                        <FaUser className="w-full h-full p-3 rounded-full border border-black" />
+    <div className="overflow-x-auto w-full px-7">
+      <table className="table">
+        {/* head */}
+        <thead>
+          <tr>
+            <th className="text-center hidden md:block">Avater</th>
+            <th className="text-center">Name</th>
+            <th className="text-center">Email</th>
+            <th className="text-center">Role</th>
+          </tr>
+        </thead>
+        <tbody>
+          {/* row 1 */}
+          {users.map((user) => (
+            <tr key={user.email}>
+              <td className="hidden md:block">
+                <div className="flex items-center justify-center space-x-3">
+                  <div className="avatar">
+                    {user.role === "instructor" ? (
+                      <div>
+                        {user.role === "instructor" ? (
+                          <FaChalkboardTeacher size="24" />
+                        ) : (
+                          <FaChalkboardTeacher size="24" />
+                        )}
                       </div>
-                    </div>
+                    ) : (
+                      <div className="mask mask-squircle">
+                        {user.role === "admin" ? (
+                          <RiAdminFill size="24" />
+                        ) : (
+                          <BiSolidUser size="24" />
+                        )}
+                      </div>
+                    )}
                   </div>
-                </td>
-                <td className="text-center">{user.name}</td>
-                <td className="text-center">{user.email}</td>
-                <td className="text-center space-y-1">
+                </div>
+              </td>
+              <td className="text-center">{user.name}</td>
+              <td className="text-center">{user.email}</td>
+              <td>
+                <div className="text-center space-y-1">
                   {user.role === "admin" ? (
-                    <button className="btn btn-ghost btn-disabled mr-2 rounded-full">
-                      ADMIN
+                    <button className="px-5 py-2 btn-disabled mr-2 rounded-full">
+                      Admin
                     </button>
                   ) : (
                     <button
@@ -105,8 +121,8 @@ const ManageUser = () => {
                     </button>
                   )}
                   {user.role === "instructor" ? (
-                    <button className="btn btn-ghost btn-disabled rounded-full p-2">
-                      INSTRUCTOR
+                    <button className="px-5 py-2 btn-disabled rounded-full p-2">
+                      Instructor
                     </button>
                   ) : (
                     <button
@@ -116,12 +132,12 @@ const ManageUser = () => {
                       Instructor
                     </button>
                   )}
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
+                </div>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
     </div>
   );
 };

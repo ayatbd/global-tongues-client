@@ -5,7 +5,11 @@ const ChooseSection = () => {
     <div className="relative overflow-hidden bg-gray-900 pt-16 pb-32 space-y-24">
       <div className="relative">
         <div className="lg:mx-auto lg:grid lg:max-w-7xl lg:grid-flow-col-dense lg:grid-cols-2 lg:gap-24 lg:px-8 ">
-          <div className="mx-auto max-w-xl px-6 lg:mx-0 lg:max-w-none lg:py-16 lg:px-0 ">
+          <div
+            data-aos="fade-right"
+            data-aos-duration="1500"
+            className="mx-auto max-w-xl px-6 lg:mx-0 lg:max-w-none lg:py-16 lg:px-0 "
+          >
             <div>
               <div>
                 <span className="flex h-12 w-12 items-center justify-center rounded-xl bg-pink-500">
@@ -47,7 +51,11 @@ const ChooseSection = () => {
               </div>
             </div>
           </div>
-          <div className="mt-12 sm:mt-16 lg:mt-0">
+          <div
+            data-aos="fade-left"
+            data-aos-duration="1500"
+            className="mt-12 sm:mt-16 lg:mt-0"
+          >
             <div className="-mr-48 pl-6 md:-mr-16 lg:relative lg:m-0 lg:h-full lg:px-0">
               <img
                 loading="lazy"
@@ -63,7 +71,11 @@ const ChooseSection = () => {
 
       <div className="relative">
         <div className="lg:mx-auto lg:grid lg:max-w-7xl lg:grid-flow-col-dense lg:grid-cols-2 lg:gap-24 lg:px-8 ">
-          <div className="mx-auto max-w-xl px-6 lg:mx-0 lg:max-w-none lg:py-16 lg:px-0 lg:col-start-2">
+          <div
+            data-aos="fade-right"
+            data-aos-duration="1500"
+            className="mx-auto max-w-xl px-6 lg:mx-0 lg:max-w-none lg:py-16 lg:px-0 lg:col-start-2"
+          >
             <div>
               <div>
                 <span className="flex h-12 w-12 items-center justify-center rounded-xl bg-pink-500">
@@ -104,7 +116,11 @@ const ChooseSection = () => {
               </div>
             </div>
           </div>
-          <div className="mt-12 sm:mt-16 lg:mt-0">
+          <div
+            data-aos="fade-left"
+            data-aos-duration="1500"
+            className="mt-12 sm:mt-16 lg:mt-0"
+          >
             <div className="-ml-48 pr-6 md:-ml-16 lg:relative lg:m-0 lg:h-full lg:px-0">
               <img
                 alt="Inbox user interface"
@@ -121,7 +137,11 @@ const ChooseSection = () => {
 
       <div className="relative">
         <div className="lg:mx-auto lg:grid lg:max-w-7xl lg:grid-flow-col-dense lg:grid-cols-2 lg:gap-24 lg:px-8 ">
-          <div className="mx-auto max-w-xl px-6 lg:mx-0 lg:max-w-none lg:py-16 lg:px-0 ">
+          <div
+            data-aos="fade-right"
+            data-aos-duration="1500"
+            className="mx-auto max-w-xl px-6 lg:mx-0 lg:max-w-none lg:py-16 lg:px-0 "
+          >
             <div>
               <div>
                 <span className="flex h-12 w-12 items-center justify-center rounded-xl bg-pink-500">
@@ -162,7 +182,11 @@ const ChooseSection = () => {
               </div>
             </div>
           </div>
-          <div className="mt-12 sm:mt-16 lg:mt-0">
+          <div
+            data-aos="fade-left"
+            data-aos-duration="1500"
+            className="mt-12 sm:mt-16 lg:mt-0"
+          >
             <div className="-mr-48 pl-6 md:-mr-16 lg:relative lg:m-0 lg:h-full lg:px-0">
               <img
                 loading="lazy"

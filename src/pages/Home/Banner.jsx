@@ -2,6 +2,7 @@ import img2 from "../../assets/images/img11.jpg";
 import img3 from "../../assets/images/img12.jpg";
 import img4 from "../../assets/images/img13.jpg";
 import img5 from "../../assets/images/img14.jpg";
+// import img6 from "../../assets/images/img26.jpg";
 import { Swiper, SwiperSlide } from "swiper/react";
 
 // Import Swiper styles
