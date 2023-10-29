@@ -8,6 +8,7 @@ const SelectedClass = () => {
   const [selectedClasses, setSelectedClasses] = useState([]);
   const [loading, setLoading] = useState(false);
   const { user } = useAuth();
+
   useEffect(() => {
     setLoading(true);
     fetch(
@@ -63,7 +64,7 @@ const SelectedClass = () => {
   };
 
   return (
-    <div className="overflow-x-auto w-full">
+    <div className="overflow-x-auto px-7 w-full">
       {selectedClasses.length !== 0 ? (
         <table className="table w-full">
           <thead>

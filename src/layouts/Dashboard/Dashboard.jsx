@@ -9,6 +9,7 @@ import useAdmin from "../../hooks/useAdmin";
 import useInstructor from "../../hooks/useInstructor";
 import useStudent from "../../hooks/useStudent";
 import useAuth from "../../hooks/useAuth";
+import profile from "../../assets/images/profile.png";
 
 const Dashboard = () => {
   const { user } = useAuth();
@@ -22,7 +23,7 @@ const Dashboard = () => {
       <Navbar></Navbar>
       <div className="drawer lg:drawer-open">
         <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
-        <div className="drawer-content flex flex-col items-center justify-center">
+        <div className="drawer-content flex flex-col items-center pt-5">
           <Outlet></Outlet>
           <label
             htmlFor="my-drawer-2"
@@ -37,16 +38,17 @@ const Dashboard = () => {
             <div className="mt-3 hidden md:block">
               <img
                 className="w-[150px] h-[150px] rounded-full mx-auto"
-                src={user?.photoURL}
-                alt=""
+                src={user.photoURL ? user.photoURL : profile}
+                alt="Image is not available"
               />
               <h1 className="text-lg text-white font-extrabold text-center font-kanit">
-                {user?.displayName}
+                {user.displayName ? user.displayName : "No Name found"}
               </h1>
               <p className="text-xs text-white font-bold font-kanit text-center">
                 {user?.email}
               </p>
             </div>
+            <div className="divider"></div>
             <ul className="menu p-4 w-[15rem] h-full text-base-content">
               {isStudent && (
                 <div>

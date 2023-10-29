@@ -34,7 +34,7 @@ const PopularInstructors = () => {
         {popular.map((p) => (
           <div
             key={p._id}
-            className={`border hover:-translate-y-3 transition duration-500 ease-in-out border-gray-300 rounded ${
+            className={`border transition duration-500 ease-in-out border-gray-300 rounded ${
               isDarkMode ? "bg-gray-900" : "bg-teal-200"
             }`}
           >

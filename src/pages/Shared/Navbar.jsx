@@ -8,6 +8,7 @@ import { RxDashboard } from "react-icons/rx";
 import { BsFillBrightnessHighFill, BsMoonStarsFill } from "react-icons/bs";
 import Swal from "sweetalert2";
 import useTheme from "../../hooks/useTheme";
+import profile from "../../assets/images/profile.png";
 // import Headroom from "react-headroom";
 
 const Navbar = () => {
@@ -174,7 +175,7 @@ const Navbar = () => {
               >
                 <img
                   className="w-10 rounded-full border-2 p-1"
-                  src={user ? user.photoURL : <FaUser />}
+                  src={user.photoURL ? user.photoURL : profile}
                 />
               </div>
               {isOpen && (
@@ -184,7 +185,7 @@ const Navbar = () => {
                 >
                   <div className="w-[120px] h-[120px] mx-auto rounded-full border-2 border-primary overflow-hidden">
                     <img
-                      src={user?.photoURL}
+                      src={user.photoURL ? user.photoURL : profile}
                       className="w-[120px] h-[120px] mx-auto rounded-full"
                       alt="profile"
                     />

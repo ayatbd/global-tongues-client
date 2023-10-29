@@ -59,7 +59,7 @@ const ManageClass = () => {
   };
 
   return (
-    <div className="overflow-x-auto w-full">
+    <div className="overflow-x-auto w-full px-7">
       <table className="table">
         <thead>
           <tr>
@@ -104,9 +104,37 @@ const ManageClass = () => {
                   >
                     Deny
                   </button>
-                  <button className="px-3 py-2 rounded-full btn-info hover:bg-blue-500 p-2">
+                  <button
+                    onClick={() =>
+                      document.getElementById("my_modal_1").showModal()
+                    }
+                    className="px-3 py-2 rounded-full btn-info hover:bg-blue-500 p-2"
+                  >
                     Feedback
                   </button>
+                  <dialog id="my_modal_1" className="modal">
+                    <div className="modal-box">
+                      <div>
+                        <textarea
+                          className="textarea w-full"
+                          placeholder="Write a feedback"
+                        ></textarea>
+                        <div className="modal-action justify-start">
+                          <form method="dialog">
+                            {/* if there is a button in form, it will close the modal */}
+                            <button className="btn btn-accent">Send</button>
+                          </form>
+                        </div>
+                      </div>
+
+                      <div className="modal-action">
+                        <form method="dialog">
+                          {/* if there is a button in form, it will close the modal */}
+                          <button className="btn">Close</button>
+                        </form>
+                      </div>
+                    </div>
+                  </dialog>
                 </div>
               </td>
             </tr>

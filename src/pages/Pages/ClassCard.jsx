@@ -141,7 +141,7 @@ const ClassCard = ({ classData }) => {
             disabled={
               availableSeats === 0 || buttonDisabled || isAdmin || isInstructor
             }
-            className={` bg-blue-600 text-white py-2 px-8 hover:bg-blue-800 custom-cls-3 animate-bounce ${
+            className={` bg-blue-600 text-white py-2 px-8 hover:bg-blue-800 custom-cls-3 ${
               availableSeats === 0 || buttonDisabled || isAdmin || isInstructor
                 ? "opacity-50 cursor-not-allowed animate-none"
                 : ""

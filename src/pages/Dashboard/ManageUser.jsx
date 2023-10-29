@@ -3,7 +3,6 @@ import Swal from "sweetalert2";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 import { RiAdminFill } from "react-icons/ri";
 import { FaChalkboardTeacher } from "react-icons/fa";
-import { BiSolidUser } from "react-icons/bi";
 
 const ManageUser = () => {
   const [axiosSecure] = useAxiosSecure();
@@ -42,7 +41,6 @@ const ManageUser = () => {
   // make instructor
 
   const handleInstructorMaking = (user) => {
-    console.log(user);
     fetch(
       `https://summer-camp-server-ten-delta.vercel.app/users/instructor/${user._id}`,
       {
@@ -97,7 +95,7 @@ const ManageUser = () => {
                         {user.role === "admin" ? (
                           <RiAdminFill size="24" />
                         ) : (
-                          <BiSolidUser size="24" />
+                          <p>User</p>
                         )}
                       </div>
                     )}

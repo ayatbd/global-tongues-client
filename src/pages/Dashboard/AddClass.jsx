@@ -4,7 +4,7 @@ import Swal from "sweetalert2";
 import useAuth from "../../hooks/useAuth";
 import { useState } from "react";
 
-const img_host_token = import.meta.env.VITE_Image_Upload_token;
+const img_host_token = "84874cf1ae546184fca4429583223a4e";
 
 const AddClass = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -16,6 +16,7 @@ const AddClass = () => {
 
   const onSubmit = async (data) => {
     setIsSubmitting(true); // Show the spinner
+    console.log(data);
 
     try {
       const formData = new FormData();
@@ -44,7 +45,7 @@ const AddClass = () => {
           className,
           email: instructorEmail,
           instructorName,
-          price: parseFloat(price),
+          price: parseFloat(price + 0.0),
           image: imgURL,
         };
         console.log(newClass);
@@ -77,17 +78,32 @@ const AddClass = () => {
           <label htmlFor="className" className="block mb-2 font-medium">
             Class name:
           </label>
-          <input
+          {/* <input
             type="text"
             {...register("className", { required: true })}
             id="className"
             required
+            placeholder="Class Name"
             className="w-full px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-blue-500 focus:border-blue-500"
-          />
+          /> */}
+          <select
+            {...register("className", { required: true })}
+            className="w-full px-4 py-2 rounded-md border"
+          >
+            <option disabled selected>
+              Select Category
+            </option>
+            <option>English</option>
+            <option>French</option>
+            <option>German</option>
+            <option>Chinese</option>
+            <option>Japanese</option>
+            <option>Korean</option>
+          </select>
         </div>
         <div className="mb-4">
           <label htmlFor="classImage" className="block mb-2 font-medium">
-            Class Image:
+            Instructor Photo:
           </label>
           <input
             type="file"
@@ -131,6 +147,7 @@ const AddClass = () => {
             {...register("availableSeats", { required: true })}
             id="availableSeats"
             required
+            placeholder="Available Seats"
             className="w-full px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-blue-500 focus:border-blue-500"
           />
         </div>
@@ -144,6 +161,7 @@ const AddClass = () => {
             id="price"
             step="0.01"
             required
+            placeholder="$100.00"
             className="w-full px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-blue-500 focus:border-blue-500"
           />
         </div>
@@ -151,21 +169,23 @@ const AddClass = () => {
           <input type="hidden" id="status" name="status" value="pending" />
         </div>
         <div className="mb-4">
-          <button
-            type="submit"
-            disabled={isSubmitting} // Disable the button during form submission
-            className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-md"
-          >
-            {isSubmitting ? (
-              <span
-                className="spinner-border spinner-border-sm"
-                role="status"
-                aria-hidden="true"
-              ></span>
-            ) : (
-              "Add"
-            )}
-          </button>
+          {isSubmitting ? (
+            <button className="px-4 py-2 rounded-md">
+              <span className="loading loading-spinner loading-xs"></span>
+            </button>
+          ) : (
+            <button
+              type="submit"
+              disabled={isSubmitting} // Disable the button during form submission
+              className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-md"
+            >
+              {isSubmitting ? (
+                <span className="loading loading-spinner loading-xs"></span>
+              ) : (
+                "Add"
+              )}
+            </button>
+          )}
         </div>
       </form>
     </div>
