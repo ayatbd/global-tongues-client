@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import img from "../../assets/images/img19.png";
+// import img from "../../assets/images/img19.png";
 import ClassCard from "./ClassCard";
 import PagesBanner from "../Shared/PagesBanner";
 import Loader from "../Shared/Loader";
@@ -10,7 +10,7 @@ const Classes = () => {
 
   useEffect(() => {
     setLoading(true);
-    fetch("https://summer-camp-server-ten-delta.vercel.app/class")
+    fetch(`${import.meta.env.VITE_API_URL}/class`)
       .then((response) => response.json())
       .then((data) => {
         setClassData(data);

@@ -17,7 +17,7 @@ const Payment = () => {
           <div className="divider w-96"></div>
         </div>
       </div>
-      <div className="mt-8 md:mt-20 md:mx-20 p-4 md:py-8 md:px-5 rounded shadow-lg border-t min-h-[200px]">
+      <div className="mt-8 md:mt-20 p-4 md:py-8 md:px-5 rounded shadow-lg border-t min-h-[200px]">
         <Elements stripe={stripePromise}>
           <CheckOutForm />
         </Elements>

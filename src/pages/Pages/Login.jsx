@@ -49,7 +49,7 @@ const Login = () => {
         name: loggedInUser.displayName,
         email: loggedInUser.email,
       };
-      fetch("https://summer-camp-server-ten-delta.vercel.app/users", {
+      fetch(`${import.meta.env.VITE_API_URL}/users`, {
         method: "POST",
         headers: {
           "content-type": "application/json",

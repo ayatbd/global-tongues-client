@@ -35,7 +35,7 @@ const PopularClassCard = ({ classData }) => {
         price,
         email: user.email,
       };
-      fetch("https://summer-camp-server-ten-delta.vercel.app/select", {
+      fetch(`${import.meta.env.VITE_API_URL}/select`, {
         method: "POST",
         headers: {
           "content-type": "application/json",

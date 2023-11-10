@@ -8,7 +8,7 @@ const ManageClass = () => {
 
   useEffect(() => {
     setLoading(true);
-    fetch("https://summer-camp-server-ten-delta.vercel.app/class")
+    fetch(`${import.meta.env.VITE_API_URL}/class`)
       .then((response) => response.json())
       .then((data) => {
         setClassData(data);
@@ -27,7 +27,7 @@ const ManageClass = () => {
       confirmButtonText: "Yes, Deny it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`https://summer-camp-server-ten-delta.vercel.app/class/${id}`, {
+        fetch(`${import.meta.env.VITE_API_URL}/class/${id}`, {
           method: "DELETE",
         })
           .then((res) => res.json())

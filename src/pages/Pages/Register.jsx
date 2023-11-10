@@ -8,6 +8,7 @@ const Register = () => {
   const [passwordError, setPasswordError] = useState("");
 
   const { createUser, updateUserProfile } = useAuth();
+  console.log(createUser);
   const Navigate = useNavigate();
   const location = useLocation();
 
@@ -23,7 +24,7 @@ const Register = () => {
     createUser(email, password)
       .then((result) => {
         const saveUser = { name, email };
-        fetch("https://summer-camp-server-ten-delta.vercel.app/users", {
+        fetch(`${import.meta.env.VITE_API_URL}/users`, {
           method: "POST",
           headers: {
             "content-type": "application/json",

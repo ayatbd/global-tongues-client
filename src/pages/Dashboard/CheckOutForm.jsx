@@ -11,7 +11,7 @@ const CheckOutForm = () => {
   //   const [selectedClasses, refetch] = useSelectedClass();
   const { user } = useAuth();
   const [clientSecret] = useState("");
-  const [processing, setProcessing] = useState(false);
+  // const [processing, setProcessing] = useState(false);
   //   const [axiosSecure] = useAxiosSecure();
   const [err, setErr] = useState("");
   //   const navigate = useNavigate();
@@ -32,18 +32,23 @@ const CheckOutForm = () => {
     }
 
     const card = elements.getElement(CardElement);
-    if (card == null) {
+    if (card === null) {
       return;
     }
-    const { error } = await stripe.createPaymentMethod({
+
+    console.log("card", card);
+
+    const { error, paymentMethod } = await stripe.createPaymentMethod({
       type: "card",
       card,
     });
-    setProcessing(true);
+    // setProcessing(true);
     if (error) {
       setErr(error.message);
+      console.log("error", error);
     } else {
       setErr("");
+      console.log("payment method", paymentMethod);
     }
     const { error: confirmationErr } = await stripe.confirmCardPayment(
       clientSecret,
@@ -127,7 +132,7 @@ const CheckOutForm = () => {
       <button
         type="submit"
         className=" mt-16 md:mt-24 py-1 rounded text-white font-kanit font-medium hover:bg-primary duration-300 text-sm w-[150px] mx-auto bg-blue-600"
-        disabled={!stripe || !clientSecret || processing}
+        // disabled={!stripe || !clientSecret || processing}
       >
         Pay
       </button>

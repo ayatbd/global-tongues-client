@@ -16,7 +16,6 @@ const AddClass = () => {
 
   const onSubmit = async (data) => {
     setIsSubmitting(true); // Show the spinner
-    console.log(data);
 
     try {
       const formData = new FormData();
@@ -28,7 +27,6 @@ const AddClass = () => {
       });
 
       const imgRes = await res.json();
-      console.log(imgRes);
 
       if (imgRes.success) {
         const imgURL = imgRes.data.display_url;

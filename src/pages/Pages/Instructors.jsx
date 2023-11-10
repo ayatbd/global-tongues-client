@@ -9,7 +9,7 @@ const Instructors = () => {
 
   useEffect(() => {
     setLoading(true);
-    fetch("https://summer-camp-server-ten-delta.vercel.app/class")
+    fetch(`${import.meta.env.VITE_API_URL}/class`)
       .then((response) => response.json())
       .then((data) => {
         setInstructors(data);

@@ -3,6 +3,7 @@ import useAuth from "../../hooks/useAuth";
 import Swal from "sweetalert2";
 import { Link } from "react-router-dom";
 import Loader from "../Shared/Loader";
+import toast, { Toaster } from "react-hot-toast";
 
 const SelectedClass = () => {
   const [selectedClasses, setSelectedClasses] = useState([]);
@@ -11,9 +12,7 @@ const SelectedClass = () => {
 
   useEffect(() => {
     setLoading(true);
-    fetch(
-      `https://summer-camp-server-ten-delta.vercel.app/select?email=${user.email}`
-    )
+    fetch(`${import.meta.env.VITE_API_URL}/select?email=${user.email}`)
       .then((response) => response.json())
       .then((data) => {
         setSelectedClasses(data);
@@ -41,20 +40,14 @@ const SelectedClass = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`https://summer-camp-server-ten-delta.vercel.app/select/${_id}`, {
+        fetch(`${import.meta.env.VITE_API_URL}/select/${_id}`, {
           method: "DELETE",
         })
           .then((res) => res.json())
           .then((data) => {
             console.log(data);
             if (data.deletedCount > 0) {
-              Swal.fire({
-                position: "top-center",
-                icon: "success",
-                title: "The class deleted successfully.",
-                showConfirmButton: false,
-                timer: 1500,
-              });
+              toast.success("Successfully Deleted!");
               const remaining = selectedClasses.filter((c) => c._id !== _id);
               setSelectedClasses(remaining);
             }
@@ -65,6 +58,7 @@ const SelectedClass = () => {
 
   return (
     <div className="overflow-x-auto px-7 w-full">
+      <Toaster />
       {selectedClasses.length !== 0 ? (
         <table className="table w-full">
           <thead>

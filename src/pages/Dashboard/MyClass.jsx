@@ -7,9 +7,7 @@ const MyClass = () => {
   const [myClass, setMyClass] = useState([]);
   const { user } = useAuth();
   useEffect(() => {
-    fetch(
-      `https://summer-camp-server-ten-delta.vercel.app/class?email=${user.email}`
-    )
+    fetch(`${import.meta.env.VITE_API_URL}/class?email=${user.email}`)
       .then((response) => response.json())
       .then((data) => setMyClass(data))
       .catch((error) => {
@@ -29,7 +27,7 @@ const MyClass = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`https://summer-camp-server-ten-delta.vercel.app/select/${_id}`, {
+        fetch(`${import.meta.env.VITE_API_URL}/select/${_id}`, {
           method: "DELETE",
         })
           .then((res) => res.json())
@@ -65,6 +63,7 @@ const MyClass = () => {
               <td>
                 <div className="flex gap-1">
                   <button
+                    disabled={c.email === user.email}
                     onClick={() => handleDelete(c._id)}
                     className="btn text-red-400 p-2"
                   >

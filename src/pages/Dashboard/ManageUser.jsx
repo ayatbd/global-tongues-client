@@ -16,15 +16,11 @@ const ManageUser = () => {
 
   const handleAdminMaking = (user) => {
     console.log(user);
-    fetch(
-      `https://summer-camp-server-ten-delta.vercel.app/users/admin/${user._id}`,
-      {
-        method: "PATCH",
-      }
-    )
+    fetch(`${import.meta.env.VITE_API_URL}/users/admin/${user._id}`, {
+      method: "PATCH",
+    })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
         if (data.modifiedCount) {
           refetch();
           Swal.fire({
@@ -41,12 +37,9 @@ const ManageUser = () => {
   // make instructor
 
   const handleInstructorMaking = (user) => {
-    fetch(
-      `https://summer-camp-server-ten-delta.vercel.app/users/instructor/${user._id}`,
-      {
-        method: "PATCH",
-      }
-    )
+    fetch(`${import.meta.env.VITE_API_URL}/users/instructor/${user._id}`, {
+      method: "PATCH",
+    })
       .then((res) => res.json())
       .then((data) => {
         console.log(data);

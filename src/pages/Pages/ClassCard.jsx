@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import "../../index.css";
@@ -17,13 +17,11 @@ const ClassCard = ({ classData }) => {
   const navigate = useNavigate();
   const [isAdmin] = useAdmin();
   const [isInstructor] = useInstructor();
-  const [buttonDisabled, setButtonDisabled] = useState(false);
 
   const { _id, availableSeats, image, name, className, instructorName, price } =
     classData;
 
   const handleSelectClass = (classData) => {
-    console.log(classData);
     if (user && user.email) {
       const classInfo = {
         classInfoId: _id,
@@ -34,8 +32,9 @@ const ClassCard = ({ classData }) => {
         instructorName,
         price,
         email: user.email,
+        userId: user._id,
       };
-      fetch("https://summer-camp-server-ten-delta.vercel.app/select", {
+      fetch(`${import.meta.env.VITE_API_URL}/select`, {
         method: "POST",
         headers: {
           "content-type": "application/json",
@@ -44,8 +43,9 @@ const ClassCard = ({ classData }) => {
       })
         .then((res) => res.json())
         .then((data) => {
+          // console.log(data.message);
           if (data.insertedId) {
-            setButtonDisabled(true);
+            console.log(classInfo);
             Swal.fire({
               position: "top-end",
               icon: "success",
@@ -138,16 +138,14 @@ const ClassCard = ({ classData }) => {
           </ul>
           <button
             onClick={() => handleSelectClass(classData)}
-            disabled={
-              availableSeats === 0 || buttonDisabled || isAdmin || isInstructor
-            }
+            disabled={availableSeats === 0 || isAdmin || isInstructor}
             className={` bg-blue-600 text-white py-2 px-8 hover:bg-blue-800 custom-cls-3 ${
-              availableSeats === 0 || buttonDisabled || isAdmin || isInstructor
+              availableSeats === 0 || isAdmin || isInstructor
                 ? "opacity-50 cursor-not-allowed animate-none"
                 : ""
             }`}
           >
-            {buttonDisabled ? "Selected" : "Select"}
+            Select
           </button>
         </div>
       </div>

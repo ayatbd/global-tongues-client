@@ -10,9 +10,9 @@ import {
   signOut,
   updateProfile,
 } from "firebase/auth";
-import { app } from "../firebase/firebase.config";
 import axios from "axios";
 import Loader from "../pages/Shared/Loader";
+import { app } from "./../firebase/firebase.config";
 
 export const AuthContext = createContext(null);
 
@@ -58,7 +58,7 @@ const AuthProvider = ({ children }) => {
 
       if (currentUser) {
         axios
-          .post("https://summer-camp-server-ten-delta.vercel.app/jwt", {
+          .post(`${import.meta.env.VITE_API_URL}/jwt`, {
             email: currentUser.email,
           })
           .then((data) => {
