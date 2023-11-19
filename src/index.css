@@ -64,6 +64,14 @@ body {
     visibility: visible;
 }
 
+.class-shadow .div-shadow {
+    transition: all ease .3s;
+}
+
+.class-shadow:hover .div-shadow {
+    visibility: visible;
+}
+
 /* page banner image  */
 .banner-img {
     background-image: url(../src/assets/images/gradient1.png), url(../src/assets/images/img18.png);

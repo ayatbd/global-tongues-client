@@ -43,7 +43,7 @@ const AddClass = () => {
           className,
           email: instructorEmail,
           instructorName,
-          price: parseFloat(price + 0.0),
+          price: price,
           image: imgURL,
         };
         console.log(newClass);
@@ -69,24 +69,19 @@ const AddClass = () => {
   };
 
   return (
-    <div className="max-w-md mx-auto">
+    <div className="bg-white md:w-2/5 shadow-md rounded px-8 py-4 my-16 flex flex-col">
       <h1 className="text-2xl font-bold mb-4">Add a Class</h1>
       <form onSubmit={handleSubmit(onSubmit)} encType="multipart/form-data">
         <div className="mb-4">
-          <label htmlFor="className" className="block mb-2 font-medium">
+          <label
+            htmlFor="className"
+            className="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2"
+          >
             Class name:
           </label>
-          {/* <input
-            type="text"
-            {...register("className", { required: true })}
-            id="className"
-            required
-            placeholder="Class Name"
-            className="w-full px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-blue-500 focus:border-blue-500"
-          /> */}
           <select
             {...register("className", { required: true })}
-            className="w-full px-4 py-2 rounded-md border"
+            className="block appearance-none w-full bg-grey-lighter border border-grey-lighter text-grey-darker py-3 px-4 pr-8 rounded"
           >
             <option disabled selected>
               Select Category
@@ -100,7 +95,10 @@ const AddClass = () => {
           </select>
         </div>
         <div className="mb-4">
-          <label htmlFor="classImage" className="block mb-2 font-medium">
+          <label
+            htmlFor="classImage"
+            className="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2"
+          >
             Instructor Photo:
           </label>
           <input
@@ -109,11 +107,14 @@ const AddClass = () => {
             id="classImage"
             accept="image/*"
             required
-            className="w-full"
+            className="appearance-none block w-full bg-grey-lighter text-grey-darker border border-red rounded py-3 px-4 mb-3"
           />
         </div>
         <div className="mb-4">
-          <label htmlFor="instructorName" className="block mb-2 font-medium">
+          <label
+            htmlFor="instructorName"
+            className="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2"
+          >
             Instructor name:
           </label>
           <input
@@ -121,11 +122,14 @@ const AddClass = () => {
             {...register("instructorName", { required: true })}
             id="instructorName"
             value={user?.displayName}
-            className="w-full px-4 py-2 rounded-md border"
+            className="appearance-none block w-full bg-grey-lighter text-grey-darker border border-red rounded py-3 px-4 mb-3"
           />
         </div>
         <div className="mb-4">
-          <label htmlFor="instructorEmail" className="block mb-2 font-medium">
+          <label
+            htmlFor="instructorEmail"
+            className="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2"
+          >
             Instructor email:
           </label>
           <input
@@ -133,11 +137,14 @@ const AddClass = () => {
             {...register("instructorEmail", { required: true })}
             id="instructorEmail"
             value={user?.email}
-            className="w-full px-4 py-2 rounded-md border"
+            className="appearance-none block w-full bg-grey-lighter text-grey-darker border border-red rounded py-3 px-4 mb-3"
           />
         </div>
         <div className="mb-4">
-          <label htmlFor="availableSeats" className="block mb-2 font-medium">
+          <label
+            htmlFor="availableSeats"
+            className="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2"
+          >
             Available seats:
           </label>
           <input
@@ -146,11 +153,14 @@ const AddClass = () => {
             id="availableSeats"
             required
             placeholder="Available Seats"
-            className="w-full px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+            className="appearance-none block w-full bg-grey-lighter text-grey-darker border border-red rounded py-3 px-4 mb-3"
           />
         </div>
         <div className="mb-4">
-          <label htmlFor="price" className="block mb-2 font-medium">
+          <label
+            htmlFor="price"
+            className="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2"
+          >
             Price:
           </label>
           <input
@@ -160,13 +170,13 @@ const AddClass = () => {
             step="0.01"
             required
             placeholder="$100.00"
-            className="w-full px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+            className="appearance-none block w-full bg-grey-lighter text-grey-darker border border-red rounded py-3 px-4 mb-3"
           />
         </div>
         <div className="mb-4">
           <input type="hidden" id="status" name="status" value="pending" />
         </div>
-        <div className="mb-4">
+        <div className="mb-4 text-center">
           {isSubmitting ? (
             <button className="px-4 py-2 rounded-md">
               <span className="loading loading-spinner loading-xs"></span>
@@ -174,14 +184,20 @@ const AddClass = () => {
           ) : (
             <button
               type="submit"
-              disabled={isSubmitting} // Disable the button during form submission
-              className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-md"
+              disabled={isSubmitting}
+              className="px-8 py-2.5 relative rounded group font-medium text-white inline-block"
             >
-              {isSubmitting ? (
-                <span className="loading loading-spinner loading-xs"></span>
-              ) : (
-                "Add"
-              )}
+              <span className="absolute top-0 left-0 w-full h-full rounded opacity-50 filter blur-sm bg-gradient-to-br from-purple-600 to-blue-500"></span>
+              <span className="h-full w-full inset-0 absolute mt-0.5 ml-0.5 bg-gradient-to-br filter group-active:opacity-0 rounded opacity-50 from-purple-600 to-blue-500"></span>
+              <span className="absolute inset-0 w-full h-full transition-all duration-200 ease-out rounded shadow-xl bg-gradient-to-br filter group-active:opacity-0 group-hover:blur-sm from-purple-600 to-blue-500"></span>
+              <span className="absolute inset-0 w-full h-full transition duration-200 ease-out rounded bg-gradient-to-br to-purple-600 from-blue-500"></span>
+              <span className="relative">
+                {isSubmitting ? (
+                  <span className="loading loading-spinner loading-xs"></span>
+                ) : (
+                  "ADD"
+                )}
+              </span>
             </button>
           )}
         </div>

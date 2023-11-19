@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import { AuthContext } from "../../provider/AuthProvider";
@@ -8,23 +8,33 @@ import useAdmin from "../../hooks/useAdmin";
 import useInstructor from "../../hooks/useInstructor";
 import { AiFillStar } from "react-icons/ai";
 import "../../index.css";
+import useSelectedClass from "../../hooks/useSelectedClass";
 
 const PopularClassCard = ({ classData }) => {
   const { user } = useContext(AuthContext);
   const { isDarkMode } = useTheme();
+  const [selectedClasses, refetch] = useSelectedClass();
 
   const location = useLocation();
   const navigate = useNavigate();
   const [isAdmin] = useAdmin();
   const [isInstructor] = useInstructor();
-  const [buttonDisabled, setButtonDisabled] = useState(false);
 
   const { _id, availableSeats, image, name, className, instructorName, price } =
     classData;
 
+  // eslint-disable-next-line no-unused-vars
   const handleSelectClass = (classData) => {
-    console.log(classData);
     if (user && user.email) {
+      const isAlreadySelected = selectedClasses.some(
+        (selectedClass) => selectedClass.classInfoId === _id
+      );
+
+      if (isAlreadySelected) {
+        // Display a message or take appropriate action
+        console.log("You have already selected this class.");
+        return;
+      }
       const classInfo = {
         classInfoId: _id,
         availableSeats,
@@ -34,6 +44,7 @@ const PopularClassCard = ({ classData }) => {
         instructorName,
         price,
         email: user.email,
+        userId: user._id,
       };
       fetch(`${import.meta.env.VITE_API_URL}/select`, {
         method: "POST",
@@ -44,8 +55,9 @@ const PopularClassCard = ({ classData }) => {
       })
         .then((res) => res.json())
         .then((data) => {
+          // console.log(data.message);
           if (data.insertedId) {
-            setButtonDisabled(true);
+            console.log(classInfo);
             Swal.fire({
               position: "top-end",
               icon: "success",
@@ -53,6 +65,7 @@ const PopularClassCard = ({ classData }) => {
               showConfirmButton: false,
               timer: 1500,
             });
+            refetch();
           }
         });
     } else {
@@ -70,6 +83,10 @@ const PopularClassCard = ({ classData }) => {
       });
     }
   };
+
+  const isAlreadySelected = selectedClasses.some(
+    (selectedClass) => selectedClass.classInfoId === _id
+  );
 
   return (
     <div
@@ -135,17 +152,23 @@ const PopularClassCard = ({ classData }) => {
             </li>
           </ul>
           <button
-            onClick={() => handleSelectClass(classData)}
             disabled={
-              availableSeats === 0 || buttonDisabled || isAdmin || isInstructor
+              availableSeats === 0 ||
+              isAdmin ||
+              isInstructor ||
+              isAlreadySelected
             }
+            onClick={() => handleSelectClass(classData)}
             className={` bg-blue-600 text-white py-2 px-8 hover:bg-blue-800 custom-cls-3 ${
-              availableSeats === 0 || buttonDisabled || isAdmin || isInstructor
+              availableSeats === 0 ||
+              isAdmin ||
+              isInstructor ||
+              isAlreadySelected
                 ? "opacity-50 cursor-not-allowed animate-none"
                 : ""
             }`}
           >
-            {buttonDisabled ? "Selected" : "Select"}
+            {isAlreadySelected ? "Selected" : "Select"}
           </button>
         </div>
       </div>

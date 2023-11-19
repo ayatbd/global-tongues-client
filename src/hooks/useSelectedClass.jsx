@@ -1,24 +1,19 @@
 import { useQuery } from "@tanstack/react-query";
-import useAuth from "./useAuth";
 import useAxiosSecure from "./useAxiosSecure";
-
+import useAuth from "./useAuth";
 const useSelectedClass = () => {
   const { user, loading } = useAuth();
   const [axiosSecure] = useAxiosSecure();
-  const {
-    isLoading,
-    data: student = {},
-    refetch,
-  } = useQuery({
-    queryKey: ["selectedClasses", user?.email],
+  const { refetch, data: selectedClass = [] } = useQuery({
+    queryKey: ["select", user?.email],
     enabled: !loading,
     queryFn: async () => {
-      const res = await axiosSecure.get(`/select?email=${user?.email}`);
-      return res?.data;
+      const res = await axiosSecure(`/select?email=${user?.email}`);
+      console.log("res from axios", res);
+      return res.data;
     },
   });
-  const selectedClasses = student.selectedClasses || [];
-  return [selectedClasses, refetch, isLoading];
-};
 
+  return [selectedClass, refetch];
+};
 export default useSelectedClass;

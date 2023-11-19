@@ -1,7 +1,6 @@
-import { useEffect, useState } from "react";
-import useAuth from "../../hooks/useAuth";
 import Swal from "sweetalert2";
-import { AiFillDelete } from "react-icons/ai";
+import useAuth from "../../hooks/useAuth";
+import { useEffect, useState } from "react";
 
 const MyClass = () => {
   const [myClass, setMyClass] = useState([]);
@@ -14,6 +13,8 @@ const MyClass = () => {
         console.error("Error:", error);
       });
   }, []);
+
+  console.log(myClass);
 
   const handleDelete = (_id) => {
     console.log(_id);
@@ -44,37 +45,71 @@ const MyClass = () => {
   };
 
   return (
-    <div className="overflow-x-auto w-full">
-      <table className="table w-full">
-        <thead>
-          <tr>
-            <th>Class Name</th>
-            <th>Available Seats</th>
-            <th>Price</th>
-            <th>Action</th>
-          </tr>
-        </thead>
-        <tbody>
-          {myClass.map((c) => (
-            <tr key={c._id}>
-              <td>{c.className}</td>
-              <td>{c.availableSeats}</td>
-              <td>{c.price}</td>
-              <td>
-                <div className="flex gap-1">
-                  <button
-                    disabled={c.email === user.email}
-                    onClick={() => handleDelete(c._id)}
-                    className="btn text-red-400 p-2"
+    <div className="flex flex-col w-full">
+      <div className="overflow-x-auto sm:mx-0.5 lg:mx-0.5">
+        <div className="py-2 inline-block min-w-full sm:px-6 lg:px-8">
+          <div className="overflow-hidden">
+            <table className="min-w-full">
+              <thead className="bg-gray-200 border-b">
+                <tr>
+                  <th
+                    scope="col"
+                    className="text-sm font-medium text-gray-900 px-6 py-4 text-left"
                   >
-                    <AiFillDelete size={24} />
-                  </button>
-                </div>
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
+                    Class Name
+                  </th>
+                  <th
+                    scope="col"
+                    className="text-sm font-medium text-gray-900 px-6 py-4 text-left"
+                  >
+                    Available Seats
+                  </th>
+                  <th
+                    scope="col"
+                    className="text-sm font-medium text-gray-900 px-6 py-4 text-left"
+                  >
+                    Price
+                  </th>
+                  <th
+                    scope="col"
+                    className="text-sm font-medium text-gray-900 px-6 py-4 text-left"
+                  >
+                    Action
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                {myClass.map((c) => (
+                  <tr
+                    key={c._id}
+                    className="bg-white border-b transition duration-300 ease-in-out hover:bg-gray-100"
+                  >
+                    <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                      {c.className}
+                    </td>
+                    <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                      {c.availableSeats}
+                    </td>
+                    <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                      {c.price}
+                    </td>
+                    <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                      <div className="flex gap-1">
+                        <button
+                          onClick={() => handleDelete(c._id)}
+                          className="text-red-400 p-2"
+                        >
+                          Delete
+                        </button>
+                      </div>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
     </div>
   );
 };

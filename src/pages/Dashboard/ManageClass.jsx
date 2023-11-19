@@ -1,20 +1,18 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Swal from "sweetalert2";
 import Loader from "../Shared/Loader";
+import { useQuery } from "@tanstack/react-query";
+import useAxiosSecure from "../../hooks/useAxiosSecure";
 
 const ManageClass = () => {
   const [classData, setClassData] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [axiosSecure] = useAxiosSecure();
 
-  useEffect(() => {
-    setLoading(true);
-    fetch(`${import.meta.env.VITE_API_URL}/class`)
-      .then((response) => response.json())
-      .then((data) => {
-        setClassData(data);
-        setLoading(false);
-      });
-  }, []);
+  const { data: classes = [], refetch } = useQuery(["class"], async () => {
+    const res = await axiosSecure("/class");
+    return res.data;
+  });
 
   const handleDelete = (id) => {
     console.log(id);
@@ -30,10 +28,14 @@ const ManageClass = () => {
         fetch(`${import.meta.env.VITE_API_URL}/class/${id}`, {
           method: "DELETE",
         })
-          .then((res) => res.json())
+          .then((res) => {
+            console.log(res);
+            return res.json();
+          })
           .then((data) => {
             console.log(data);
             if (data.deletedCount > 0) {
+              refetch();
               Swal.fire("Deleted!", "Your class has been deleted.", "success");
               const remaining = classData.filter((c) => c._id !== id);
               setClassData(remaining);
@@ -46,16 +48,29 @@ const ManageClass = () => {
   if (loading) {
     return <Loader />;
   }
-
-  const handleApprove = (id) => {
-    Swal.fire("Approved!", "Your class has been approved.", "success");
-    const updatedClassData = classData.map((c) => {
-      if (c._id === id) {
-        return { ...c, status: "approved" };
-      }
-      return c;
-    });
-    setClassData(updatedClassData);
+  const handleApprove = (c) => {
+    console.log(c);
+    if (c.status === "approved") {
+      // If already approved, do nothing
+      return;
+    }
+    fetch(`${import.meta.env.VITE_API_URL}/class/approve/${c._id}`, {
+      method: "PATCH",
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        if (data.modifiedCount) {
+          refetch();
+          Swal.fire({
+            position: "top-end",
+            icon: "success",
+            title: "The user is Instructor Now!",
+            showConfirmButton: false,
+            timer: 1500,
+          });
+        }
+      });
   };
 
   return (
@@ -73,8 +88,8 @@ const ManageClass = () => {
           </tr>
         </thead>
         <tbody>
-          {classData.map((c) => (
-            <tr className="" key={c._id}>
+          {classes.map((c) => (
+            <tr key={c._id}>
               <td className="hidden md:inline">
                 <div className="flex items-center space-x-3">
                   <div className="avatar">
@@ -92,9 +107,13 @@ const ManageClass = () => {
               <td>
                 <div className="flex gap-1 justify-center items-center h-full">
                   <button
-                    className="px-3 py-2 rounded-full btn-success hover:bg-blue-500 p-2"
+                    className={
+                      c.status === "approved"
+                        ? "px-3 py-2 rounded-full  hover:bg-white p-2 cursor-not-allowed"
+                        : "px-3 py-2 rounded-full btn-success hover:bg-blue-500 p-2"
+                    }
                     disabled={c.status === "approved"}
-                    onClick={() => handleApprove(c._id)}
+                    onClick={() => handleApprove(c)}
                   >
                     {c.status === "approved" ? "Approved" : "Approve"}
                   </button>

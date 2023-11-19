@@ -8,10 +8,12 @@ import useAdmin from "../../hooks/useAdmin";
 import useInstructor from "../../hooks/useInstructor";
 import { AiFillStar } from "react-icons/ai";
 import useTheme from "../../hooks/useTheme";
+import useSelectedClass from "../../hooks/useSelectedClass";
 
 const ClassCard = ({ classData }) => {
   const { user } = useContext(AuthContext);
   const { isDarkMode } = useTheme();
+  const [selectedClasses, refetch] = useSelectedClass();
 
   const location = useLocation();
   const navigate = useNavigate();
@@ -21,8 +23,18 @@ const ClassCard = ({ classData }) => {
   const { _id, availableSeats, image, name, className, instructorName, price } =
     classData;
 
+  // eslint-disable-next-line no-unused-vars
   const handleSelectClass = (classData) => {
     if (user && user.email) {
+      const isAlreadySelected = selectedClasses.some(
+        (selectedClass) => selectedClass.classInfoId === _id
+      );
+
+      if (isAlreadySelected) {
+        // Display a message or take appropriate action
+        console.log("You have already selected this class.");
+        return;
+      }
       const classInfo = {
         classInfoId: _id,
         availableSeats,
@@ -36,6 +48,7 @@ const ClassCard = ({ classData }) => {
       };
       fetch(`${import.meta.env.VITE_API_URL}/select`, {
         method: "POST",
+
         headers: {
           "content-type": "application/json",
         },
@@ -53,6 +66,7 @@ const ClassCard = ({ classData }) => {
               showConfirmButton: false,
               timer: 1500,
             });
+            refetch();
           }
         });
     } else {
@@ -71,7 +85,9 @@ const ClassCard = ({ classData }) => {
     }
   };
 
-  // const arr = [];
+  const isAlreadySelected = selectedClasses.some(
+    (selectedClass) => selectedClass.classInfoId === _id
+  );
 
   return (
     <div
@@ -137,15 +153,23 @@ const ClassCard = ({ classData }) => {
             </li>
           </ul>
           <button
+            disabled={
+              availableSeats === 0 ||
+              isAdmin ||
+              isInstructor ||
+              isAlreadySelected
+            }
             onClick={() => handleSelectClass(classData)}
-            disabled={availableSeats === 0 || isAdmin || isInstructor}
             className={` bg-blue-600 text-white py-2 px-8 hover:bg-blue-800 custom-cls-3 ${
-              availableSeats === 0 || isAdmin || isInstructor
+              availableSeats === 0 ||
+              isAdmin ||
+              isInstructor ||
+              isAlreadySelected
                 ? "opacity-50 cursor-not-allowed animate-none"
                 : ""
             }`}
           >
-            Select
+            {isAlreadySelected ? "Selected" : "Select"}
           </button>
         </div>
       </div>

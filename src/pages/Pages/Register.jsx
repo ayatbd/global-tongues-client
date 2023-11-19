@@ -1,18 +1,21 @@
 /* eslint-disable no-unused-vars */
-import { useState } from "react";
+import React, { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
-import { Link, useLocation, useNavigate } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 
 const Register = () => {
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
   const [passwordError, setPasswordError] = useState("");
+  const [confirmPasswordError, setConfirmPasswordError] = useState("");
 
-  const { createUser, updateUserProfile } = useAuth();
-  console.log(createUser);
-  const Navigate = useNavigate();
-  const location = useLocation();
+  const { createUser } = useAuth();
+  const navigate = useNavigate();
 
-  const handleRegister = (event) => {
+  const handleRegister = async (event) => {
     event.preventDefault();
     const form = event.target;
     const name = form.name.value;
@@ -21,37 +24,43 @@ const Register = () => {
     const photo = form.photo.value;
     console.log(name, email, password, photo, confirm);
 
-    createUser(email, password)
-      .then((result) => {
+    validatePassword(password);
+    validateConfirmPassword(confirmPassword);
+
+    if (passwordError || confirmPasswordError) {
+      return;
+    }
+
+    try {
+      const result = await createUser(email, password);
+
+      if (result.user) {
         const saveUser = { name, email };
-        fetch(`${import.meta.env.VITE_API_URL}/users`, {
+
+        const response = await fetch(`${import.meta.env.VITE_API_URL}/users`, {
           method: "POST",
           headers: {
-            "content-type": "application/json",
+            "Content-Type": "application/json",
           },
           body: JSON.stringify(saveUser),
-        })
-          .then((res) => res.json())
-          .then((data) => {
-            if (data.insertedId) {
-              Swal.fire({
-                position: "top-end",
-                icon: "success",
-                title: "User created successfully.",
-                showConfirmButton: false,
-                timer: 1500,
-              });
-              Navigate("/");
-            }
-          });
+        });
 
-        const user = result.user;
-        console.log("created user", user);
-        form.reset();
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+        const data = await response.json();
+
+        if (data.insertedId) {
+          Swal.fire({
+            position: "top-end",
+            icon: "success",
+            title: "User created successfully.",
+            showConfirmButton: false,
+            timer: 1500,
+          });
+          navigate("/");
+        }
+      }
+    } catch (error) {
+      console.error("Registration error:", error);
+    }
   };
 
   const validatePassword = (password) => {
@@ -62,6 +71,15 @@ const Register = () => {
       );
     } else {
       setPasswordError("");
+    }
+  };
+
+  const validateConfirmPassword = (confirmPassword) => {
+    const password = document.getElementById("password").value;
+    if (password !== confirmPassword) {
+      setConfirmPasswordError("Passwords do not match.");
+    } else {
+      setConfirmPasswordError("");
     }
   };
   return (
@@ -81,8 +99,6 @@ const Register = () => {
               type="text"
               id="name"
               className="w-full border border-gray-300 rounded-md py-2 px-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
-              //   value={name}
-              //   onChange={handleNameChange}
               required
             />
           </div>
@@ -98,8 +114,6 @@ const Register = () => {
               type="email"
               id="email"
               className="w-full border border-gray-300 rounded-md py-2 px-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
-              //   value={email}
-              //   onChange={handleEmailChange}
               required
             />
           </div>
@@ -115,7 +129,6 @@ const Register = () => {
               type="password"
               id="password"
               className="w-full border border-gray-300 rounded-md py-2 px-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
-              //   value={password}
               onChange={(e) => {
                 // handlePasswordChange(e);
                 validatePassword(e.target.value);
@@ -138,10 +151,18 @@ const Register = () => {
               type="password"
               id="confirmPassword"
               className="w-full border border-gray-300 rounded-md py-2 px-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
-              //   value={confirmPassword}
-              //   onChange={handleConfirmPasswordChange}
+              value={confirmPassword}
+              onChange={(e) => {
+                setConfirmPassword(e.target.value);
+                validateConfirmPassword(e.target.value);
+              }}
               required
             />
+            {confirmPasswordError && (
+              <p className="text-red-500 text-sm mt-1">
+                {confirmPasswordError}
+              </p>
+            )}
           </div>
           <div className="mb-4">
             <label
@@ -155,8 +176,6 @@ const Register = () => {
               type="text"
               id="photoURL"
               className="w-full border border-gray-300 rounded-md py-2 px-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
-              //   value={photoURL}
-              //   onChange={handlePhotoURLChange}
               required
             />
           </div>
