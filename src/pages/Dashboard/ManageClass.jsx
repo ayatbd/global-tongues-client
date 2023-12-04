@@ -74,8 +74,8 @@ const ManageClass = () => {
   };
 
   return (
-    <div className="overflow-x-auto w-full px-7">
-      <table className="table">
+    <div className="w-full px-7">
+      <table className="table overflow-x-auto">
         <thead>
           <tr>
             <th className="hidden md:block">Pictur</th>
@@ -109,8 +109,8 @@ const ManageClass = () => {
                   <button
                     className={
                       c.status === "approved"
-                        ? "px-3 py-2 rounded-full  hover:bg-white p-2 cursor-not-allowed"
-                        : "px-3 py-2 rounded-full btn-success hover:bg-blue-500 p-2"
+                        ? "text-sm py-1 px-2 rounded  hover:bg-white p-2 cursor-not-allowed"
+                        : "text-sm bg-blue-500 hover:bg-blue-700 text-white py-1 px-2 rounded focus:outline-none focus:shadow-outline"
                     }
                     disabled={c.status === "approved"}
                     onClick={() => handleApprove(c)}
@@ -119,7 +119,7 @@ const ManageClass = () => {
                   </button>
                   <button
                     onClick={() => handleDelete(c._id)}
-                    className="px-3 py-2 rounded-full btn-error hover:bg-blue-500 p-2"
+                    className="text-sm bg-red-500 hover:bg-red-700 text-white py-1 px-2 rounded focus:outline-none focus:shadow-outline"
                   >
                     Deny
                   </button>
@@ -127,7 +127,7 @@ const ManageClass = () => {
                     onClick={() =>
                       document.getElementById("my_modal_1").showModal()
                     }
-                    className="px-3 py-2 rounded-full btn-info hover:bg-blue-500 p-2"
+                    className="text-sm bg-blue-600 hover:bg-blue-700 text-white py-1 px-2 rounded focus:outline-none focus:shadow-outline"
                   >
                     Feedback
                   </button>

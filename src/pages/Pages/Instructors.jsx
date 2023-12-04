@@ -46,7 +46,9 @@ const Instructors = () => {
               </p>
               <p>Total Classes: </p>
               <p>Total Students: </p>
-              <button className="btn btn-accent">See All Classes</button>
+              <button className="btn normal-case bg-primary text-white hover:bg-blue-700">
+                See All Classes
+              </button>
             </div>
           </div>
         ))}

@@ -2,6 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+    font-family: 'Roboto';
+    src: url('./assets/Roboto.zip') format('truetype');
+    /* Add more src declarations for different weights/styles if needed */
+}
 
 .ml2 {
     font-weight: 900;
@@ -35,6 +40,28 @@ body {
     box-sizing: border-box;
 }
 
+/*========== nav css ==========*/
+
+.menu-horizontal .active {
+    @apply bg-inherit text-primary;
+}
+
+.navbar .menu li>*:not(ul):not(details).active,
+.navbar .menu li>details>summary:active {
+    background-color: unset !important;
+    color: rgb(37 99 235 / var(--tw-bg-opacity)) !important;
+}
+
+.navbar .menu-horizontal li a {}
+
+.navbar .menu-horizontal li:hover a {
+    background-color: unset !important;
+}
+
+.navbar .menu-horizontal li a:hover {
+    color: #2463eb !important;
+}
+
 .swiper {
     width: 100%;
     height: 100%;
@@ -56,6 +83,26 @@ body {
     width: 100%;
     height: 100%;
     object-fit: cover;
+}
+
+.swiper-button-next,
+.swiper-button-prev {
+    background-color: #2463eb;
+    width: 35px !important;
+    height: 35px !important;
+    border-radius: 50%;
+}
+
+.swiper-button-next:hover,
+.swiper-button-prev:hover {
+    background-color: rgb(75, 132, 255);
+}
+
+.swiper-button-prev:after,
+.swiper-button-next:after {
+    font-size: 16px !important;
+    font-weight: bold;
+    color: floralwhite;
 }
 
 /* popular class css  */
@@ -100,3 +147,18 @@ choose section css .choose-img {
 
 /* popular classe section  */
 .img-layer {}
+
+/* scroll to top button css  */
+
+.scroll-to-top {
+    background-color: #2463eb !important;
+    border-radius: 50% !important;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.scroll-to-top:hover {
+    background-color: #0351f8 !important;
+}

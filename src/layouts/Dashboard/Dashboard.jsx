@@ -22,7 +22,7 @@ const Dashboard = () => {
       <Navbar></Navbar>
       <div className="drawer lg:drawer-open">
         <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
-        <div className="drawer-content flex flex-col items-center pt-5">
+        <div className="drawer-content flex flex-col items-center">
           <Outlet></Outlet>
           <label
             htmlFor="my-drawer-2"
@@ -38,27 +38,27 @@ const Dashboard = () => {
             className="drawer-overlay"
           ></label>
 
-          <div className="pt-3 hidden md:block bg-indigo-800">
+          <div className="pt-5 hidden md:block bg-gray-100 text-black">
             <img
-              className="w-[150px] h-[150px] rounded-full mx-auto"
+              className="w-[100px] h-[100px] rounded-full mx-auto"
               src={user.photoURL ? user.photoURL : profile}
               alt="Image is not available"
             />
-            <h1 className="text-lg text-white font-extrabold text-center font-kanit">
+            <h1 className="text-lg font-extrabold text-center font-kanit">
               {user.displayName ? user.displayName : "No Name found"}
             </h1>
-            <p className="text-xs text-white font-bold font-kanit text-center">
+            <p className="text-xs text-pink-600 font-bold font-kanit text-center">
               {user?.email}
             </p>
           </div>
-          <ul className="menu bg-indigo-800 p-4 w-[15rem] h-full text-base-content">
-            <hr className="my-5" />
+          <ul className="menu bg-gray-100 p-4 w-[15rem] h-full text-base-content">
+            <hr className="my-6 text-black" />
             {isStudent && (
               <div>
                 <li>
                   <NavLink
                     to="/dashboard/selectedclass"
-                    className="font-bold text-white"
+                    className="font-bold text-gray-900"
                   >
                     <BiSelectMultiple></BiSelectMultiple> My Selected Classes
                   </NavLink>
@@ -66,7 +66,7 @@ const Dashboard = () => {
                 <li>
                   <NavLink
                     to="/dashboard/enrolledclass"
-                    className="font-bold text-white"
+                    className="font-bold text-gray-900"
                   >
                     <SiGoogleclassroom></SiGoogleclassroom> My Enrolled Classes
                   </NavLink>
@@ -74,7 +74,7 @@ const Dashboard = () => {
                 <li>
                   <NavLink
                     to="/dashboard/payhistory"
-                    className="font-bold text-white"
+                    className="font-bold text-gray-900"
                   >
                     <MdOutlinePayment></MdOutlinePayment> Payment History
                   </NavLink>
@@ -86,7 +86,7 @@ const Dashboard = () => {
                 <li>
                   <NavLink
                     to="/dashboard/addclass"
-                    className="font-bold text-white"
+                    className="font-bold text-gray-900"
                   >
                     <FaLeanpub></FaLeanpub> Add a Class
                   </NavLink>
@@ -94,7 +94,7 @@ const Dashboard = () => {
                 <li>
                   <NavLink
                     to="/dashboard/myclass"
-                    className="font-bold text-white"
+                    className="font-bold text-gray-900"
                   >
                     <FaChalkboardTeacher></FaChalkboardTeacher> My Classes
                   </NavLink>
@@ -106,7 +106,7 @@ const Dashboard = () => {
                 <li>
                   <NavLink
                     to="/dashboard/manageclass"
-                    className="font-bold text-white"
+                    className="font-bold text-gray-900"
                   >
                     <FaChalkboardTeacher></FaChalkboardTeacher> Manage Classes
                   </NavLink>
@@ -114,7 +114,7 @@ const Dashboard = () => {
                 <li>
                   <NavLink
                     to="/dashboard/manageuser"
-                    className="font-bold text-white"
+                    className="font-bold text-gray-900"
                   >
                     <FaUserFriends></FaUserFriends> Manage Users
                   </NavLink>

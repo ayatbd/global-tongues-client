@@ -57,78 +57,86 @@ const ManageUser = () => {
   };
 
   return (
-    <div className="overflow-x-auto w-full px-7">
-      <table className="table">
-        {/* head */}
-        <thead>
-          <tr>
-            <th className="text-center hidden md:block">Avater</th>
-            <th className="text-center">Name</th>
-            <th className="text-center">Email</th>
-            <th className="text-center">Role</th>
-          </tr>
-        </thead>
-        <tbody>
-          {/* row 1 */}
-          {users.map((user) => (
-            <tr key={user.email}>
-              <td className="hidden md:block">
-                <div className="flex items-center justify-center space-x-3">
-                  <div className="avatar">
-                    {user.role === "instructor" ? (
-                      <div>
-                        {user.role === "instructor" ? (
-                          <FaChalkboardTeacher size="24" />
-                        ) : (
-                          <FaChalkboardTeacher size="24" />
-                        )}
-                      </div>
+    <div className="text-gray-900 bg-gray-200 md:w-full">
+      <div className="p-4 flex">
+        <h1 className="text-3xl">Users</h1>
+      </div>
+      <div className="px-3 py-4">
+        <table className="w-full overflow-x-auto text-md bg-white shadow-md rounded mb-4">
+          <tbody>
+            <tr className="border-b">
+              <th className="text-left p-3 px-5">Avater</th>
+              <th className="text-left p-3 px-5">Name</th>
+              <th className="text-left p-3 px-5">Email</th>
+              <th className="text-left p-3 px-5">Role</th>
+            </tr>
+            {users.map((user) => (
+              <tr
+                key={user.email}
+                className={
+                  user.role === "admin"
+                    ? "bg-red-200"
+                    : "border-b hover:bg-orange-100 bg-gray-100"
+                }
+              >
+                <td className="p-3 px-5">
+                  <div className="flex items-center justify-center space-x-3">
+                    <div className="avatar">
+                      {user.role === "instructor" ? (
+                        <div>
+                          {user.role === "instructor" ? (
+                            <FaChalkboardTeacher size="24" />
+                          ) : (
+                            <FaChalkboardTeacher size="24" />
+                          )}
+                        </div>
+                      ) : (
+                        <div className="mask mask-squircle">
+                          {user.role === "admin" ? (
+                            <RiAdminFill size="24" />
+                          ) : (
+                            <p>User</p>
+                          )}
+                        </div>
+                      )}
+                    </div>
+                  </div>
+                </td>
+                <td className="p-3 px-5">{user.name}</td>
+                <td className="p-3 px-5">{user.email}</td>
+                <td className="p-3 px-5">
+                  <div className="text-center space-y-1 space-x-2">
+                    {user.role === "admin" ? (
+                      <button className="text-sm text-black py-1 px-2 rounded">
+                        Admin
+                      </button>
                     ) : (
-                      <div className="mask mask-squircle">
-                        {user.role === "admin" ? (
-                          <RiAdminFill size="24" />
-                        ) : (
-                          <p>User</p>
-                        )}
-                      </div>
+                      <button
+                        onClick={() => handleAdminMaking(user)}
+                        className="text-sm bg-blue-500 hover:bg-blue-700 text-white py-1 px-2 rounded focus:outline-none focus:shadow-outline"
+                      >
+                        Admin
+                      </button>
+                    )}
+                    {user.role === "instructor" ? (
+                      <button className="text-sm text-black py-1 px-2 rounded">
+                        Instructor
+                      </button>
+                    ) : (
+                      <button
+                        onClick={() => handleInstructorMaking(user)}
+                        className="text-sm bg-blue-500 hover:bg-blue-700 text-white py-1 px-2 rounded focus:outline-none focus:shadow-outline"
+                      >
+                        Instructor
+                      </button>
                     )}
                   </div>
-                </div>
-              </td>
-              <td className="text-center">{user.name}</td>
-              <td className="text-center">{user.email}</td>
-              <td>
-                <div className="text-center space-y-1">
-                  {user.role === "admin" ? (
-                    <button className="px-5 py-2 btn-disabled mr-2 rounded-full">
-                      Admin
-                    </button>
-                  ) : (
-                    <button
-                      onClick={() => handleAdminMaking(user)}
-                      className="px-5 py-2 rounded-full btn-error hover:bg-blue-500 p-2"
-                    >
-                      Admin
-                    </button>
-                  )}
-                  {user.role === "instructor" ? (
-                    <button className="px-5 py-2 btn-disabled rounded-full p-2">
-                      Instructor
-                    </button>
-                  ) : (
-                    <button
-                      onClick={() => handleInstructorMaking(user)}
-                      className="px-5 py-2 rounded-full btn-error hover:bg-blue-500 p-2"
-                    >
-                      Instructor
-                    </button>
-                  )}
-                </div>
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
     </div>
   );
 };
