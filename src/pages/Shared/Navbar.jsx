@@ -79,6 +79,11 @@ const Navbar = () => {
                   </NavLink>
                 </li>
                 <li>
+                  <NavLink to="/classes" className="font-bold">
+                    Contact Us
+                  </NavLink>
+                </li>
+                <li>
                   <NavLink to="/dashboard/home" className="font-bold">
                     Dashboard
                   </NavLink>
