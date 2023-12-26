@@ -79,7 +79,7 @@ const Navbar = () => {
                   </NavLink>
                 </li>
                 <li>
-                  <NavLink to="/classes" className="font-bold">
+                  <NavLink to="/contact" className="font-bold">
                     Contact Us
                   </NavLink>
                 </li>
@@ -147,6 +147,14 @@ const Navbar = () => {
                   className="text-gray-800 text-[17px] font-bold"
                 >
                   About
+                </NavLink>
+              </li>
+              <li>
+                <NavLink
+                  to="/contact"
+                  className="text-gray-800 text-[17px] font-bold"
+                >
+                  Contact Us
                 </NavLink>
               </li>
             </ul>

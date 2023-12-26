@@ -20,6 +20,7 @@ import ManageClass from "../pages/Dashboard/ManageClass";
 import ManageUser from "../pages/Dashboard/ManageUser";
 import Classes from "../pages/Pages/Classes";
 import Instructors from "../pages/Pages/Instructors";
+import Contact from "../pages/Pages/Contact";
 
 export const router = createBrowserRouter([
   {
@@ -50,6 +51,10 @@ export const router = createBrowserRouter([
       {
         path: "about",
         element: <About></About>,
+      },
+      {
+        path: "contact",
+        element: <Contact></Contact>,
       },
     ],
   },
