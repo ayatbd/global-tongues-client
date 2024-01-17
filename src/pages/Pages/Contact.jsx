@@ -172,7 +172,7 @@ const Contact = () => {
                       press@example.com
                     </p>
                     <p className="text-neutral-500 dark:text-neutral-200">
-                      +1 234-567-89
+                      +1 234-567-90
                     </p>
                   </div>
                 </div>
@@ -203,7 +203,7 @@ const Contact = () => {
                       bugs@example.com
                     </p>
                     <p className="text-neutral-500 dark:text-neutral-200">
-                      +1 234-567-89
+                      +1 234-567-90
                     </p>
                   </div>
                 </div>
