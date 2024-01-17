@@ -36,12 +36,7 @@
             alt="Avatar user"
             className="w-10 md:w-16 rounded-full mx-auto"
           />
-          <div>
-            <h2 className="font-medium text-xs md:text-sm text-center text-teal-500">
-              Eduard Pantazi
-            </h2>
-            <p className="text-xs text-gray-500 text-center">Administrator</p>
-          </div>
+          <div></div>
         </div>
         <div className="flex border-2 border-gray-200 rounded-md focus-within:ring-2 ring-teal-500">
           <input
