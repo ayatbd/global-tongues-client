@@ -7,7 +7,11 @@ import Container from "../Shared/Container";
 const Animation = () => {
   const { isDarkMode } = useTheme();
   return (
-    <div className="py-10">
+    <div
+      className={`py-10 ${
+        isDarkMode ? "bg-gray-900 border-y border-gray-400" : "bg-white"
+      }`}
+    >
       <Container>
         <div
           className={`md:flex justify-center items-center ${
@@ -20,7 +24,11 @@ const Animation = () => {
             }`}
           >
             <Slide triggerOnce duration={2000}>
-              <h1 className="text-3xl lg:text-6xl md:text-4xl font-bold mb-5">
+              <h1
+                className={`text-3xl lg:text-6xl md:text-4xl font-bold mb-5 ${
+                  isDarkMode ? "text-white" : ""
+                }`}
+              >
                 New language, new <br /> opportunities, new you
               </h1>
             </Slide>
@@ -31,7 +39,11 @@ const Animation = () => {
               cascade
               damping={0.1}
             >
-              <p className="text-base sm:text-lg md:text-xl lg:text-2xl">
+              <p
+                className={`text-base sm:text-lg md:text-xl lg:text-2xl ${
+                  isDarkMode ? "text-white" : ""
+                }`}
+              >
                 Get access to compact lessons from the experts and connect with
                 a community of native speakers <br /> to help you master words
                 faster.

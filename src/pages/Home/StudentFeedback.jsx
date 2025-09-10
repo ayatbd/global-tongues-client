@@ -1,4 +1,3 @@
-/* eslint-disable react/no-unescaped-entities */
 import "aos/dist/aos.css";
 import useTheme from "../../hooks/useTheme";
 import Tittle from "../Shared/Tittle";
@@ -9,7 +8,7 @@ const StudentFeedback = () => {
 
   return (
     <div className={` ${isDarkMode && "bg-gray-900"}`}>
-      <section className="bg-gray-50 py-20">
+      <section className={`bg-gray-50 py-20 ${isDarkMode && "bg-gray-900"}`}>
         <Container>
           <Tittle subTitle="Reviews" title="Our Students Feedback"></Tittle>
           <div className="mx-auto max-w-screen-2xl px-4 py-12 sm:px-6 lg:px-8 lg:py-16">
@@ -104,7 +103,7 @@ const StudentFeedback = () => {
                 </div>
                 <div className="mt-4">
                   <p className="mt-4 leading-relaxed text-gray-700">
-                    "The online language course surpassed my expectations. Its
+                    "The online language course surpassed my expectations.. Its
                     user-friendly platform, coupled with well-paced modules,
                     allowed for a seamless learning journey. The combination of
                     practical exercises and cultural insights provided a
@@ -173,7 +172,7 @@ const StudentFeedback = () => {
                   <p className="mt-4 leading-relaxed text-gray-700">
                     "The online language course I undertook was a game-changer.
                     The platform provided an immersive learning environment with
-                    well-organized modules, fostering a solid foundation in the
+                    well-organized modules,, fostering a solid foundation in the
                     language. The support from tutors and the diverse range of
                     learning materials significantly boosted my confidence in
                     speaking and understanding the language."

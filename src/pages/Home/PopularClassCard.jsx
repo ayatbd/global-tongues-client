@@ -89,95 +89,6 @@ const PopularClassCard = ({ classData }) => {
   );
 
   return (
-    // <div
-    // className={`group border rounded-lg overflow-hidden custom-cls-2 border-gray-300 ${
-    //   availableSeats === 0 ? "bg-red-500" : "bg-white"
-    // }`}
-    // >
-    //   <div className="overflow-hidden">
-    //     <img
-    //       src={image}
-    //       alt={name}
-    //       className="w-full object-cover group-hover:scale-125 transition duration-700 ease-in-out h-60"
-    //     />
-    //   </div>
-    //   <div
-    //     className={`p-4 space-y-2 overflow-hidden ${
-    //       isDarkMode ? "bg-gray-900 text-white" : ""
-    //     }`}
-    //   >
-    //     <div className={`mb-2 space-y-2 ${isDarkMode ? "text-white" : ""}`}>
-    //       <div className="flex justify-between items-center">
-    //         <h3
-    //           className={`text-[22px] font-bold text-black ${
-    //             isDarkMode ? "text-white" : ""
-    //           }`}
-    //         >
-    //           {instructorName}
-    //         </h3>
-    //         <p className="text-red-600">{className}</p>
-    //       </div>
-
-    //       <div className="py-3 flex justify-between items-center">
-    //         <p className={`text-black ${isDarkMode ? "text-white" : ""}`}>
-    //           <strong>Available Seats:</strong> {availableSeats}
-    //         </p>
-
-    //         <p
-    //           className={`text-black text-lg font-bold py-1 px-4 rounded-full bg-[#01A2A6] ${
-    //             isDarkMode ? "text-white" : "text-white"
-    //           }`}
-    //         >
-    //           ${price}
-    //         </p>
-    //       </div>
-    //     </div>
-    //     <hr />
-    //     <div className="flex justify-between items-center">
-    //       <ul className="flex items-center gap-{2px}">
-    //         <li>
-    //           <AiFillStar size={16} className="text-yellow-400" />
-    //         </li>
-    //         <li>
-    //           <AiFillStar size={16} className="text-yellow-400" />
-    //         </li>
-    //         <li>
-    //           <AiFillStar size={16} className="text-yellow-400" />
-    //         </li>
-    //         <li>
-    //           <AiFillStar size={16} className="text-yellow-400" />
-    //         </li>
-    //         <li>
-    //           <AiFillStar size={16} className="text-yellow-400" />
-    //         </li>
-    //         <li>
-    //           <span className="bg-blue-100 text-blue-800 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded dark:bg-blue-200 dark:text-blue-800 ml-3">
-    //             5.0
-    //           </span>
-    //         </li>
-    //       </ul>
-    //       <button
-    //         disabled={
-    //           availableSeats === 0 ||
-    //           isAdmin ||
-    //           isInstructor ||
-    //           isAlreadySelected
-    //         }
-    //         onClick={() => handleSelectClass(classData)}
-    //         className={` bg-blue-600 text-white py-2 px-8 hover:bg-blue-800 custom-cls-3 ${
-    //           availableSeats === 0 ||
-    //           isAdmin ||
-    //           isInstructor ||
-    //           isAlreadySelected
-    //             ? "opacity-50 cursor-not-allowed animate-none"
-    //             : ""
-    //         }`}
-    //       >
-    //         {isAlreadySelected ? "Selected" : "Select"}
-    //       </button>
-    //     </div>
-    //   </div>
-    // </div>
     <div
       data-aos="fade-up"
       className={`relative w-full overflow-hidden rounded-lg bg-white shadow-md ${
@@ -191,7 +102,11 @@ const PopularClassCard = ({ classData }) => {
           alt="product image"
         />
       </Link>
-      <div className="mt-4 px-5 pb-5">
+      <div
+        className={`mt-4 px-5 pb-5 ${
+          isDarkMode && "bg-gray-900 text-white border border-r-gray-400"
+        }`}
+      >
         <div className="flex justify-between">
           <Link>
             <h5 className="text-xl font-semibold tracking-tight text-slate-900">
@@ -255,8 +170,8 @@ const PopularClassCard = ({ classData }) => {
           <strong>Available Seats:</strong> {availableSeats}
         </p>
         <div className="flex items-center justify-between mt-6">
-          <p>
-            <span className="text-3xl font-bold text-slate-900">${price}</span>
+          <p className={`text-black ${isDarkMode && "text-white"}`}>
+            <span className="text-3xl font-bold ">${price}</span>
           </p>
           <Link
             disabled={

@@ -20,7 +20,11 @@ import Container from "../Shared/Container";
 const Banner = () => {
   const { isDarkMode } = useTheme();
   return (
-    <div className="lg:h-[90vh] md:h-[70vh] h-[50vh] z-0">
+    <div
+      className={`lg:h-[90vh] md:h-[70vh] h-[50vh] z-0 ${
+        isDarkMode ? "bg-gray-700" : ""
+      }`}
+    >
       <Swiper
         spaceBetween={30}
         centeredSlides={true}

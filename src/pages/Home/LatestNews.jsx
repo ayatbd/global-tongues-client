@@ -1,6 +1,6 @@
 /* eslint-disable react/no-unescaped-entities */
 import Container from "../Shared/Container";
-
+import img30 from "./../../assets/images/img30.jpg";
 const LatestNews = () => {
   return (
     <div>
@@ -57,8 +57,8 @@ const LatestNews = () => {
                   </small>
                 </p>
                 <p className="text-neutral-500 dark:text-neutral-300">
-                  "Language learning opens doors to diverse cultures and fosters
-                  global connections. Embrace the journey of mastering a new
+                  "Language learning opens doors to diverse cultures & fosters
+                  global connections.. Embrace the journey of mastering a new
                   language, enriching both your communication skills and
                   understanding of the world."
                 </p>
@@ -72,11 +72,7 @@ const LatestNews = () => {
                   data-te-ripple-init
                   data-te-ripple-color="light"
                 >
-                  <img
-                    src="https://language-school.cmsmasters.net/wp-content/uploads/2015/11/Depositphotos_85241600_original.jpg"
-                    className="w-full"
-                    alt="Louvre"
-                  />
+                  <img src={img30} className="w-full" alt="Louvre" />
                   <a href="#!">
                     <div className="absolute top-0 right-0 bottom-0 left-0 h-full w-full overflow-hidden bg-fixed opacity-0 transition duration-300 ease-in-out hover:opacity-100 bg-[hsla(0,0%,98.4%,.15)]"></div>
                   </a>
@@ -92,14 +88,14 @@ const LatestNews = () => {
                 </div>
                 <p className="mb-6 text-neutral-500 dark:text-neutral-300">
                   <small>
-                    Published <u>12.01.2022</u> by
-                    <a href="#!">Halley Frank</a>
+                    Published <u>12.01.2023</u> by
+                    <a href="#!">Halley Frankle</a>
                   </small>
                 </p>
                 <p className="text-neutral-500 dark:text-neutral-300">
                   "Learning a language is a gateway to unlocking new
-                  opportunities, broadening perspectives, and fostering deeper
-                  connections with people worldwide. It's a rewarding endeavor
+                  opportunities,, broadening perspectives, and fostering deeper
+                  connections with people worldwide.. It's a rewarding endeavor
                   that expands horizons and enhances cognitive abilities."
                 </p>
               </div>
@@ -128,12 +124,12 @@ const LatestNews = () => {
                   WHY ARE YOU THINKING ABOUT LEARNING BETTER ENGLISH?
                 </h3>
                 <div className="mb-3 flex items-center justify-center text-sm font-medium text-yellow-600 md:justify-start">
-                  By Miller
+                  By David Miller
                 </div>
                 <p className="mb-6 text-neutral-500 dark:text-neutral-300">
                   <small>
-                    Published <u>10.01.2022</u> by
-                    <a href="#!">Joe Svan</a>
+                    Published <u>10.01.2023</u> by
+                    <a href="#!">Joe Svane</a>
                   </small>
                 </p>
                 <p className="text-neutral-500 dark:text-neutral-300">

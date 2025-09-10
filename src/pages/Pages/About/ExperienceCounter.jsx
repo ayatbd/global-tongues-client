@@ -1,11 +1,11 @@
 import useTheme from "../../../hooks/useTheme";
-import CountInView from "./CountInView";
+// import CountInView from "./CountInView";
 
 const ExperienceCounter = () => {
   const { isDarkMode } = useTheme();
   return (
     <div className="max-container my-14 md:mb-20 grid grid-cols-2 md:grid-cols-4 gap-y-5 justify-items-center  py-10 rounded-md shadow ">
-      <div className="">
+      {/* <div className="">
         <CountInView start={0} end={100} duration={2} />
         <div
           className={`text-lg md:text-xl font-semibold text-[#666666]  ${
@@ -44,7 +44,7 @@ const ExperienceCounter = () => {
         >
           Success Stories
         </div>
-      </div>
+      </div> */}
     </div>
   );
 };

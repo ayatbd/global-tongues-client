@@ -37,7 +37,9 @@ const Navbar = () => {
   };
   return (
     <div
-      className={`border-b border-blue-400 ${isDarkMode ? "bg-gray-700" : ""}`}
+      className={`border-b border-blue-400 ${
+        isDarkMode ? "bg-gray-700 border-gray-500" : ""
+      }`}
     >
       <Container>
         <div className="navbar">
@@ -212,7 +214,7 @@ const Navbar = () => {
                   >
                     <img
                       className="w-10 rounded-full border-2 p-1"
-                      src={user.photoURL ? user.photoURL : profile}
+                      src={user?.photoURL ? user?.photoURL : profile}
                     />
                   </div>
                   {isOpen && (

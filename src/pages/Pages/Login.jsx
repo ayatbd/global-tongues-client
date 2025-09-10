@@ -10,6 +10,7 @@ import { app } from "../../firebase/firebase.config";
 
 const Login = () => {
   const [user, setUser] = useState(null);
+
   const [error, setError] = useState("");
   const [passwordVisible, setPasswordVisible] = useState(false);
 
@@ -122,7 +123,7 @@ const Login = () => {
           </div>
           <button
             type="submit"
-            className="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded-full mb-6"
+            className="bg-blue-500 hover:bg-blue-600 text-white py-2 px-10 rounded-full mb-6"
           >
             Login
           </button>

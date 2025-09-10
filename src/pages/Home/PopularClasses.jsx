@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import { useEffect, useState } from "react";
 import "../../index.css";
 import useTheme from "../../hooks/useTheme";
@@ -12,8 +13,6 @@ const PopularClasses = () => {
   const [approvedClasses, setApprovedClasses] = useState([]);
   const { isDarkMode } = useTheme();
   const [axiosSecure] = useAxiosSecure();
-
-  console.log(approvedClasses);
 
   const {
     data: classes = [],
@@ -43,10 +42,18 @@ const PopularClasses = () => {
     .slice(0, 6);
 
   return (
-    <div className={`py-24 bg-[#f5f6f9] ${isDarkMode && "bg-gray-900"}`}>
+    <div
+      className={`py-24 bg-[#f5f6f9] ${
+        isDarkMode && "bg-gray-900 border-b border-gray-400"
+      }`}
+    >
       <Container>
         <Tittle subTitle="Best Selling" title="Popular Classes"></Tittle>
-        <div className="grid overflow-hidden grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 mt-14">
+        <div
+          className={`grid overflow-hidden grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 mt-14 ${
+            isDarkMode && "bg-gray-900"
+          }`}
+        >
           {approvedClasses.map((classData) => (
             <PopularClassCard
               key={classData._id}

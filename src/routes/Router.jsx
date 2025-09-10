@@ -21,6 +21,7 @@ import ManageUser from "../pages/Dashboard/ManageUser";
 import Classes from "../pages/Pages/Classes";
 import Instructors from "../pages/Pages/Instructors";
 import Contact from "../pages/Pages/Contact";
+import TestRoute from "./TestRoute";
 
 export const router = createBrowserRouter([
   {
@@ -55,6 +56,10 @@ export const router = createBrowserRouter([
       {
         path: "contact",
         element: <Contact></Contact>,
+      },
+      {
+        path: "testroute",
+        element: <TestRoute />,
       },
     ],
   },

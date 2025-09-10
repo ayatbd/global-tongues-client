@@ -1,5 +1,6 @@
 import Animation from "./Animation";
 import Banner from "./Banner";
+import FAQ from "./Faq";
 import LatestNews from "./LatestNews";
 // import ChooseSection from "./ChooseSection";
 import PopularClasses from "./PopularClasses";
@@ -13,9 +14,9 @@ const Home = () => {
       <Animation />
       <PopularClasses />
       <PopularInstructors />
-      {/* <ChooseSection /> */}
       <StudentFeedback />
       <LatestNews></LatestNews>
+      <FAQ></FAQ>
     </div>
   );
 };

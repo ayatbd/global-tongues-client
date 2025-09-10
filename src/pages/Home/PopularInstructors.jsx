@@ -30,78 +30,23 @@ const PopularInstructors = () => {
         <Tittle subTitle="Best Tutor" title="See Top Instructors"></Tittle>
         <div className="my-14 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
           {popular.map((p) => (
-            // <div
-            //   key={p._id}
-            //   className={`border transition duration-500 ease-in-out border-gray-300 rounded ${
-            //     isDarkMode ? "bg-gray-900" : "bg-teal-200"
-            //   }`}
-            // >
-            //   <img
-            //     src={p.image}
-            //     alt={p.name}
-            //     className="w-full h-60 object-cover mb-4"
-            //   />
-            //   <div
-            //     className={`p-4 space-y-2 overflow-hidden ${
-            //       isDarkMode ? "bg-gray-900 text-white" : ""
-            //     }`}
-            //   >
-            //     <div
-            //       className={`mb-2 space-y-2 ${isDarkMode ? "text-white" : ""}`}
-            //     >
-            //       <div className="flex justify-between items-center">
-            //         <h3
-            //           className={`text-xl font-bold text-black ${
-            //             isDarkMode ? "text-white" : ""
-            //           }`}
-            //         >
-            //           {p.instructorName}
-            //         </h3>
-            //       </div>
-            //       <p>{p.email}</p>
-
-            //       <div className="mb-2 flex justify-between items-center">
-            //         <p className={`text-black ${isDarkMode ? "text-white" : ""}`}>
-            //           <strong>Available Seats:</strong> {p.availableSeats}
-            //         </p>
-
-            //         <p
-            //           className={`text-black font-bold py-1 px-4 rounded-full bg-[#01A2A6] ${
-            //             isDarkMode ? "text-white" : "text-white"
-            //           }`}
-            //         >
-            //           ${p.price}
-            //         </p>
-            //       </div>
-            //     </div>
-            //     <hr />
-            //     <div className="flex justify-between items-center">
-            //       <ul className="flex items-center gap-1">
-            //         <li>
-            //           <AiFillStar className="text-yellow-400" />
-            //         </li>
-            //         <li>
-            //           <AiFillStar className="text-yellow-400" />
-            //         </li>
-            //         <li>
-            //           <AiFillStar className="text-yellow-400" />
-            //         </li>
-            //         <li>
-            //           <AiFillStar className="text-yellow-400" />
-            //         </li>
-            //         <li>
-            //           <AiFillStar className="text-yellow-400" />
-            //         </li>
-            //       </ul>
-            //       <p>{p.className}</p>
-            //     </div>
-            //   </div>
-            // </div>
-            <div data-aos="fade-up" key={p._id} className="max-w-2xl mx-auto">
-              <div className="bg-white shadow-md rounded-lg max-w-sm dark:bg-gray-800 dark:border-gray-700">
+            <div
+              data-aos="fade-up"
+              key={p._id}
+              className={`max-w-2xl mx-auto ${isDarkMode && "bg-gray-900"}`}
+            >
+              <div
+                className={`bg-white shadow-md rounded-lg max-w-sm ${
+                  isDarkMode && "bg-gray-900"
+                }`}
+              >
                 <img className="rounded-t-lg p-8" src={p.image} alt={p.name} />
 
-                <div className="px-5 pb-5">
+                <div
+                  className={`px-5 pb-5 ${
+                    isDarkMode && "bg-gray-900 border border-gray-400"
+                  }`}
+                >
                   <h3 className="text-gray-900 font-semibold text-xl tracking-tight dark:text-white">
                     {p.instructorName}
                   </h3>

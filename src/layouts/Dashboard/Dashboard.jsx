@@ -38,7 +38,7 @@ const Dashboard = () => {
             className="drawer-overlay"
           ></label>
 
-          <div className="pt-5 hidden md:block bg-gray-100 text-black">
+          <div className="pt-5 w-full hidden md:block bg-gray-100 text-black">
             <img
               className="w-[100px] h-[100px] rounded-full mx-auto"
               src={user.photoURL ? user.photoURL : profile}
@@ -51,7 +51,7 @@ const Dashboard = () => {
               {user?.email}
             </p>
           </div>
-          <ul className="menu bg-gray-100 p-4 w-[15rem] h-full text-base-content">
+          <ul className="menu bg-gray-100 p-4 w-[15rem] h-full text-base-content overflow-hidden">
             <hr className="my-6 text-black" />
             {isStudent && (
               <div>
