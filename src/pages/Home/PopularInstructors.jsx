@@ -97,10 +97,18 @@ const PopularInstructors = () => {
                     </span>
                   </div>
                   <div className="flex items-center justify-between">
-                    <span className="text-3xl font-bold text-gray-900 dark:text-white">
+                    <span
+                      className={`text-3xl font-bold text-gray-900 dark:text-white ${
+                        isDarkMode && "text-white"
+                      }`}
+                    >
                       ${p.price}
                     </span>
-                    <p className="text-gray-900 font-semibold text-xl tracking-tight dark:text-white">
+                    <p
+                      className={`text-gray-900 font-semibold text-xl tracking-tight dark:text-white ${
+                        isDarkMode && "text-white"
+                      }`}
+                    >
                       {p.className}
                     </p>
                   </div>

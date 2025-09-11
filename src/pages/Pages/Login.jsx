@@ -49,6 +49,7 @@ const Login = () => {
       const saveUser = {
         name: loggedInUser.displayName,
         email: loggedInUser.email,
+        image: loggedInUser.photoURL,
       };
       fetch(`${import.meta.env.VITE_API_URL}/users`, {
         method: "POST",

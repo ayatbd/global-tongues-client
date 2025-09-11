@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 import "aos/dist/aos.css";
 import useTheme from "../../hooks/useTheme";
 import Tittle from "../Shared/Tittle";
@@ -7,7 +8,7 @@ const StudentFeedback = () => {
   const { isDarkMode } = useTheme();
 
   return (
-    <div className={` ${isDarkMode && "bg-gray-900"}`}>
+    <div className={` ${isDarkMode && "bg-gray-900 border-y border-gray-400"}`}>
       <section className={`bg-gray-50 py-20 ${isDarkMode && "bg-gray-900"}`}>
         <Container>
           <Tittle subTitle="Reviews" title="Our Students Feedback"></Tittle>
@@ -17,7 +18,11 @@ const StudentFeedback = () => {
               className="md:flex md:items-end md:justify-between"
             >
               <div data-aos="fade-right" className="max-w-xl">
-                <h2 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl">
+                <h2
+                  className={`text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl ${
+                    isDarkMode && "text-white"
+                  }`}
+                >
                   Read trusted reviews from our students
                 </h2>
               </div>
@@ -49,7 +54,11 @@ const StudentFeedback = () => {
               data-aos-duration="1000"
               className="mt-8 grid grid-cols-1 gap-4 lg:grid-cols-3"
             >
-              <blockquote className="flex h-full flex-col justify-between bg-white p-6 shadow-sm sm:p-8">
+              <blockquote
+                className={`flex h-full flex-col justify-between p-6 shadow-sm sm:p-8 ${
+                  isDarkMode ? "bg-gray-900 border" : "bg-white"
+                }`}
+              >
                 <div className="flex items-center gap-4">
                   <img
                     alt="Man"
@@ -99,10 +108,21 @@ const StudentFeedback = () => {
                         <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
                       </svg>
                     </div>
+                    <p
+                      className={`mt-0.5 text-lg font-medium  ${
+                        isDarkMode ? "text-white" : "text-gray-900"
+                      }`}
+                    >
+                      Maxwell
+                    </p>
                   </div>
                 </div>
                 <div className="mt-4">
-                  <p className="mt-4 leading-relaxed text-gray-700">
+                  <p
+                    className={`mt-4 leading-relaxed ${
+                      isDarkMode ? "text-white" : "text-gray-900"
+                    }`}
+                  >
                     "The online language course surpassed my expectations.. Its
                     user-friendly platform, coupled with well-paced modules,
                     allowed for a seamless learning journey. The combination of
@@ -111,7 +131,11 @@ const StudentFeedback = () => {
                   </p>
                 </div>
               </blockquote>
-              <blockquote className="flex h-full flex-col justify-between bg-white p-6 shadow-sm sm:p-8">
+              <blockquote
+                className={`flex h-full flex-col justify-between p-6 shadow-sm sm:p-8 ${
+                  isDarkMode ? "bg-gray-900 border" : "bg-white"
+                }`}
+              >
                 <div className="flex items-center gap-4">
                   <img
                     alt="Man"
@@ -163,13 +187,21 @@ const StudentFeedback = () => {
                       </svg>
                     </div>
 
-                    <p className="mt-0.5 text-lg font-medium text-gray-900">
+                    <p
+                      className={`mt-0.5 text-lg font-medium  ${
+                        isDarkMode ? "text-white" : "text-gray-900"
+                      }`}
+                    >
                       Paul Starr
                     </p>
                   </div>
                 </div>
                 <div className="mt-4">
-                  <p className="mt-4 leading-relaxed text-gray-700">
+                  <p
+                    className={`mt-4 leading-relaxed ${
+                      isDarkMode ? "text-white" : "text-gray-900"
+                    }`}
+                  >
                     "The online language course I undertook was a game-changer.
                     The platform provided an immersive learning environment with
                     well-organized modules,, fostering a solid foundation in the
@@ -179,7 +211,11 @@ const StudentFeedback = () => {
                   </p>
                 </div>
               </blockquote>
-              <blockquote className="flex h-full flex-col justify-between bg-white p-6 shadow-sm sm:p-8">
+              <blockquote
+                className={`flex h-full flex-col justify-between p-6 shadow-sm sm:p-8 ${
+                  isDarkMode ? "bg-gray-900 border" : "bg-white"
+                }`}
+              >
                 <div className="flex items-center gap-4">
                   <img
                     alt="Man"
@@ -231,13 +267,21 @@ const StudentFeedback = () => {
                       </svg>
                     </div>
 
-                    <p className="mt-0.5 text-lg font-medium text-gray-900">
-                      Paul Starr
+                    <p
+                      className={`mt-0.5 text-lg font-medium  ${
+                        isDarkMode ? "text-white" : "text-gray-900"
+                      }`}
+                    >
+                      Mark
                     </p>
                   </div>
                 </div>
                 <div className="mt-4">
-                  <p className="mt-4 leading-relaxed text-gray-700">
+                  <p
+                    className={`mt-4 leading-relaxed ${
+                      isDarkMode ? "text-white" : "text-gray-900"
+                    }`}
+                  >
                     "The online language course I completed was an exceptional
                     experience. The curriculum was comprehensive, offering a
                     structured approach to learning that catered to various

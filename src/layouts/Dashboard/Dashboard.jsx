@@ -40,9 +40,9 @@ const Dashboard = () => {
 
           <div className="pt-5 w-full hidden md:block bg-gray-100 text-black">
             <img
-              className="w-[100px] h-[100px] rounded-full mx-auto"
-              src={user.photoURL ? user.photoURL : profile}
-              alt="Image is not available"
+              className="w-[100px] text-center h-[100px] rounded-full mx-auto border"
+              src={user?.photoURL ? user?.photoURL : profile}
+              alt="No Image"
             />
             <h1 className="text-lg font-extrabold text-center font-kanit">
               {user.displayName ? user.displayName : "No Name found"}
