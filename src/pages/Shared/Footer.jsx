@@ -1,102 +1,293 @@
-import {
-  FaFacebookF,
-  FaInstagram,
-  FaLinkedinIn,
-  FaTwitter,
-} from "react-icons/fa";
-import { Link } from "react-router-dom";
-import img1 from "../../assets/images/img0.png";
+import useTheme from "../../hooks/useTheme";
 import Container from "./Container";
 
 const Footer = () => {
+  const { isDarkMode } = useTheme();
   return (
-    <div className="bg-gray-900 h-fit lg:h-[55vh]  w-full">
+    <footer
+      className={`pt-12 pb-8 ${
+        isDarkMode
+          ? "bg-gray-900 text-white"
+          : "bg-white text-gray-900 border-t border-gray-200 shadow-md"
+      }`}
+    >
       <Container>
-        <div className="bg-[url('https://i.ibb.co/SctkR1y/footer-bg.png')] h-fit lg:h-[55vh] w-full flex flex-col justify-between">
-          <div className="max-container pt-10 md:pt-14 grid grid-cols-2 lg:grid-cols-4 gap-y-5 md:gap-y-0 p-2 md:p-0 overflow-hidden">
-            <div
-              data-aos="fade-left"
-              className="flex flex-col  items-center gap-2"
-            >
-              <img className="w-8 md:w-16" src={img1} alt="" />
-              <h1 className="text-xl md:text-3xl font-kanit font-extrabold text-white">
-                Global<span className="text-primary">Tongues</span>
-              </h1>
-              <p className="text-white md:text-lg mt-3 md:mt-7 ">Address</p>
-              <p className="text-[#b8b8b8] max-w-[250px] text-center">
-                20 Mercantile Plaza, Suite 546, Fort Worth, TX, 16734, USA
+        <div className="container mx-auto px-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
+            {/* Company Info */}
+            <div className="space-y-4">
+              <div className="flex items-center">
+                <svg
+                  className="h-8 w-8 text-blue-400"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"
+                  />
+                </svg>
+                <span className="ml-2 text-xl font-bold">Company</span>
+              </div>
+              <p
+                className={`${isDarkMode ? "text-gray-400" : "text-gray-600"}`}
+              >
+                Building innovative solutions for the modern world.
               </p>
-            </div>
-            <div
-              data-aos="fade-left"
-              className="w-full h-full font-kanit pl-4 md:pl-16 border-l border-secondary"
-            >
-              <h1 className="text-base md:text-2xl font-bold text-white">
-                Contract With Us
-              </h1>
-              <div className="border border-primary w-1/4 mt-2"></div>
-              <p className="text-white text-lg mt-3 md:mt-5">Call Us</p>
-              <p className="text-[#b8b8b8] mt-2">(.......789)</p>
-              <p className="text-white text-lg mt-3 md:mt-5 ">Mail Us</p>
-              <p className="text-[#b8b8b8] mt-2">example@gmail.com</p>
-            </div>
-            <div
-              data-aos="fade-left"
-              className="w-full h-full font-kanit pl-3 md:px-14 md:border-x border-secondary"
-            >
-              <h1 className="text-xl md:text-2xl font-bold text-white">
-                Quick Links
-              </h1>
-              <div className="border border-primary w-1/4 mt-2"></div>
-              <div className="flex flex-col gap-3 mt-8">
-                <Link to="/" className="text-base text-[#b8b8b8]">
-                  Home
-                </Link>
-                <Link to="/" className="text-base text-[#b8b8b8]">
-                  About Us
-                </Link>
-                <Link to="/" className="text-base text-[#b8b8b8]">
-                  Contract
-                </Link>
-                <Link to="/" className="text-base text-[#b8b8b8]">
-                  Classes
-                </Link>
+              <div className="flex space-x-4">
+                {/* Facebook */}
+                <a
+                  href="#"
+                  className={`${
+                    isDarkMode
+                      ? "text-gray-400 hover:text-white"
+                      : "text-gray-600 hover:text-gray-900"
+                  } transition`}
+                >
+                  <span className="sr-only">Facebook</span>
+                  <svg
+                    className="h-6 w-6"
+                    fill="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      fillRule="evenodd"
+                      clipRule="evenodd"
+                      d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89
+                     1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 
+                     21.128 22 16.991 22 12z"
+                    />
+                  </svg>
+                </a>
+
+                {/* Twitter */}
+                <a
+                  href="#"
+                  className={`${
+                    isDarkMode
+                      ? "text-gray-400 hover:text-white"
+                      : "text-gray-600 hover:text-gray-900"
+                  } transition`}
+                >
+                  <span className="sr-only">Twitter</span>
+                  <svg
+                    className="h-6 w-6"
+                    fill="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      d="M8.29 20.251c7.547 0 11.675-6.253
+                   11.675-11.675 0-.178 0-.355-.012-.53A8.348
+                   8.348 0 0022 5.92a8.19 8.19 0 
+                   01-2.357.646 4.118 4.118 0 
+                   001.804-2.27 8.224 8.224 0 
+                   01-2.605.996 4.107 4.107 0 
+                   00-6.993 3.743 11.65 11.65 0 
+                   01-8.457-4.287 4.106 4.106 0 
+                   001.27 5.477A4.072 4.072 0 
+                   012.8 9.713v.052a4.105 4.105 0 
+                   003.292 4.022 4.095 4.095 0 
+                   01-1.853.07 4.108 4.108 0 
+                   003.834 2.85A8.233 8.233 0 
+                   012 18.407a11.616 11.616 0 
+                   006.29 1.84"
+                    />
+                  </svg>
+                </a>
+
+                {/* Instagram */}
+                <a
+                  href="#"
+                  className={`${
+                    isDarkMode
+                      ? "text-gray-400 hover:text-white"
+                      : "text-gray-600 hover:text-gray-900"
+                  } transition`}
+                >
+                  <span className="sr-only">Instagram</span>
+                  <svg
+                    className="h-6 w-6"
+                    fill="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      fillRule="evenodd"
+                      clipRule="evenodd"
+                      d="M12.315 2c2.43 0 2.784.013 
+                    3.808.06 1.064.049 1.791.218 
+                    2.427.465a4.902 4.902 0 
+                    011.772 1.153 4.902 4.902 0 
+                    011.153 1.772c.247.636.416 1.363.465 
+                    2.427.048 1.067.06 1.407.06 
+                    4.123v.08c0 2.643-.012 
+                    2.987-.06 4.043-.049 1.064-.218 
+                    1.791-.465 2.427a4.902 4.902 0 
+                    01-1.153 1.772 4.902 4.902 0 
+                    01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.067.048-1.407.06-4.123.06h-.08c-2.643 
+                    0-2.987-.012-4.043-.06-1.064-.049-1.791-.218-2.427-.465a4.902 
+                    4.902 0 01-1.772-1.153 4.902 4.902 
+                    0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.047-1.024-.06-1.379-.06-3.808v-.63c0-2.43.013-2.784.06-3.808.049-1.064.218-1.791.465-2.427a4.902 
+                    4.902 0 011.153-1.772A4.902 4.902 0 
+                    015.45 2.525c.636-.247 1.363-.416 
+                    2.427-.465C8.901 2.013 9.256 2 
+                    11.685 2h.63zM12 6.865a5.135 
+                    5.135 0 110 10.27 5.135 
+                    5.135 0 010-10.27z"
+                    />
+                  </svg>
+                </a>
+
+                {/* LinkedIn */}
+                <a
+                  href="#"
+                  className={`${
+                    isDarkMode
+                      ? "text-gray-400 hover:text-white"
+                      : "text-gray-600 hover:text-gray-900"
+                  } transition`}
+                >
+                  <span className="sr-only">LinkedIn</span>
+                  <svg
+                    className="h-6 w-6"
+                    fill="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      fillRule="evenodd"
+                      clipRule="evenodd"
+                      d="M19 0h-14c-2.761 0-5 2.239-5 
+                    5v14c0 2.761 2.239 5 5 
+                    5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 
+                    19h-3v-11h3v11zm-1.5-12.268c-.966 
+                    0-1.75-.79-1.75-1.764s.784-1.764 
+                    1.75-1.764 1.75.79 1.75 1.764-.783 
+                    1.764-1.75 1.764zm13.5 
+                    12.268h-3v-5.604c0-3.368-4-3.113-4 
+                    0v5.604h-3v-11h3v1.765c1.396-2.586 
+                    7-2.777 7 2.476v6.759z"
+                    />
+                  </svg>
+                </a>
               </div>
             </div>
-            <div
-              data-aos="fade-left"
-              className="w-full h-full font-kanit pl-3 md:pl-16"
-            >
-              <h1 className="text-xl md:text-2xl font-bold text-white">
-                Subscribe Now
-              </h1>
-              <div className="border border-primary w-1/4 mt-2"></div>
-              <p className="text-white text-lg mt-2 md:mt-7 ">
-                Get Us In The Inbox And Get The Best Implementation!
-              </p>
-              <p className="text-[#b8b8b8] text-base mt-2 md:mt-4 ">
-                When looking at its layout. The point of using Lorem it is a
-                long fact that will be distracted.
-              </p>
-              <input
-                type="email"
-                name=""
-                id=""
-                className="w-full rounded-full h-8 md:h-10 px-6 mt-2 md:mt-5 text-[#b8b8b8] bg-white outline-none"
-                placeholder="Enter your email"
-              />
-              <button className="w-full h-8 md:h-10 mt-2 md:mt-5  rounded-full border border-primary text-base font-bold font-kanit bg-primary hover:animate-pulse transition-all duration-300 text-white">
-                Subscribe now
-              </button>
+
+            {/* Quick Links */}
+            <div className="space-y-4">
+              <h3 className="text-lg font-semibold">Quick Links</h3>
+              <ul className="space-y-2">
+                {["Home", "About Us", "Services", "Pricing", "Blog"].map(
+                  (item) => (
+                    <li key={item}>
+                      <a
+                        href="#"
+                        className={`${
+                          isDarkMode
+                            ? "text-gray-400 hover:text-white"
+                            : "text-gray-600 hover:text-gray-900"
+                        } transition`}
+                      >
+                        {item}
+                      </a>
+                    </li>
+                  )
+                )}
+              </ul>
+            </div>
+
+            {/* Services */}
+            <div className="space-y-4">
+              <h3 className="text-lg font-semibold">Services</h3>
+              <ul className="space-y-2">
+                {[
+                  "Language Learning",
+                  "Vocabulary Learning",
+                  "Accent Practice",
+                  "Practice Daily",
+                  "Enrolling Anytime",
+                ].map((service) => (
+                  <li key={service}>
+                    <a
+                      href="#"
+                      className={`${
+                        isDarkMode
+                          ? "text-gray-400 hover:text-white"
+                          : "text-gray-600 hover:text-gray-900"
+                      } transition`}
+                    >
+                      {service}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Contact */}
+            <div className="space-y-4">
+              <h3 className="text-lg font-semibold">Contact Us</h3>
+              <address
+                className={`not-italic ${
+                  isDarkMode ? "text-gray-400" : "text-gray-600"
+                }`}
+              >
+                <p>123 Business Ave</p>
+                <p>San Francisco, CA 94107</p>
+                <p className="mt-2">
+                  Email:{" "}
+                  <a
+                    href="mailto:info@company.com"
+                    className={`hover:text-white transition`}
+                  >
+                    info@company.com
+                  </a>
+                </p>
+                <p>
+                  Phone:{" "}
+                  <a
+                    href="tel:+11234567890"
+                    className={`hover:text-white transition`}
+                  >
+                    +1 (123) 456-7890
+                  </a>
+                </p>
+              </address>
             </div>
           </div>
-          <p className="text-white text-base text-center my-4">
-            &#169; All right reserved by{" "}
-            <span className="text-primary">GlobalTongues</span>
-          </p>
+
+          {/* Bottom Section */}
+          <div
+            className={`border-t pt-6 flex flex-col md:flex-row justify-between items-center ${
+              isDarkMode ? "border-gray-800" : "border-gray-300"
+            }`}
+          >
+            <p
+              className={`text-sm mb-4 md:mb-0 ${
+                isDarkMode ? "text-gray-500" : "text-gray-600"
+              }`}
+            >
+              © 2025 Company. All rights reserved.
+            </p>
+            <div className="flex space-x-6">
+              {["Privacy Policy", "Terms of Service", "Cookies"].map((link) => (
+                <a
+                  key={link}
+                  href="#"
+                  className={`text-sm transition ${
+                    isDarkMode
+                      ? "text-gray-500 hover:text-white"
+                      : "text-gray-600 hover:text-gray-900"
+                  }`}
+                >
+                  {link}
+                </a>
+              ))}
+            </div>
+          </div>
         </div>
       </Container>
-    </div>
+    </footer>
   );
 };
 
