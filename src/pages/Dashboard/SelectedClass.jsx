@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import useAuth from "../../hooks/useAuth";
 import Swal from "sweetalert2";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Loader from "../Shared/Loader";
 import toast, { Toaster } from "react-hot-toast";
 
@@ -9,6 +9,7 @@ const SelectedClass = () => {
   const [selectedClasses, setSelectedClasses] = useState([]);
   const [loading, setLoading] = useState(false);
   const { user } = useAuth();
+  const navigate = useNavigate();
 
   useEffect(() => {
     setLoading(true);
@@ -56,6 +57,11 @@ const SelectedClass = () => {
     });
   };
 
+  const handlePay = (id) => {
+    console.log("view payment", id);
+    navigate(`payment/${id}`);
+  };
+
   return (
     <div className="overflow-x-auto px-7 w-full">
       <Toaster />
@@ -88,7 +94,10 @@ const SelectedClass = () => {
                 <td>
                   <div className="flex gap-1">
                     <Link to="/dashboard/payment">
-                      <button className="btn-accent rounded-full px-5 py-2">
+                      <button
+                        onClick={() => handlePay(c._id)}
+                        className="btn-accent rounded-full px-5 py-2"
+                      >
                         Pay Now
                       </button>
                     </Link>

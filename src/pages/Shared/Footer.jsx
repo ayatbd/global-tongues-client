@@ -15,7 +15,7 @@ const Footer = () => {
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
             {/* Company Info */}
-            <div className="space-y-4">
+            <div data-aos="fade-left" className="space-y-4">
               <div className="flex items-center">
                 <svg
                   className="h-8 w-8 text-blue-400"
@@ -175,7 +175,7 @@ const Footer = () => {
             </div>
 
             {/* Quick Links */}
-            <div className="space-y-4">
+            <div data-aos="fade-left" className="space-y-4">
               <h3 className="text-lg font-semibold">Quick Links</h3>
               <ul className="space-y-2">
                 {["Home", "About Us", "Services", "Pricing", "Blog"].map(
@@ -198,7 +198,7 @@ const Footer = () => {
             </div>
 
             {/* Services */}
-            <div className="space-y-4">
+            <div data-aos="fade-left" className="space-y-4">
               <h3 className="text-lg font-semibold">Services</h3>
               <ul className="space-y-2">
                 {[
@@ -225,7 +225,7 @@ const Footer = () => {
             </div>
 
             {/* Contact */}
-            <div className="space-y-4">
+            <div data-aos="fade-left" className="space-y-4">
               <h3 className="text-lg font-semibold">Contact Us</h3>
               <address
                 className={`not-italic ${
@@ -258,6 +258,7 @@ const Footer = () => {
 
           {/* Bottom Section */}
           <div
+            data-aos="fade-left"
             className={`border-t pt-6 flex flex-col md:flex-row justify-between items-center ${
               isDarkMode ? "border-gray-800" : "border-gray-300"
             }`}

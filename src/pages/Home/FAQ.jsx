@@ -1,5 +1,6 @@
 import useTheme from "../../hooks/useTheme";
 import Container from "../Shared/Container";
+import Tittle from "../Shared/Tittle";
 
 const FAQ = () => {
   const { isDarkMode } = useTheme();
@@ -13,11 +14,12 @@ const FAQ = () => {
       } py-8`}
     >
       <Container>
-        <div className="max-w-3xl mx-auto my-12 px-4">
-          <h2 className="text-3xl font-bold text-center mb-8">
+        <div className="max-w-3xl mx-auto my-12 px-4 space-y-14">
+          {/* <h2 className="text-3xl font-bold text-center mb-8">
             Frequently Asked Questions
-          </h2>
-          <div className="space-y-4">
+          </h2> */}
+          <Tittle title="Frequently Asked Questions"></Tittle>
+          <div data-aos="fade-up" className="space-y-4">
             {/* FAQ 1 */}
             <div
               className={`collapse collapse-plus border rounded-box ${

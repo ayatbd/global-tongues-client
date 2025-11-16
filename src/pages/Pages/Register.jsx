@@ -11,19 +11,32 @@ const Register = () => {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [passwordError, setPasswordError] = useState("");
   const [confirmPasswordError, setConfirmPasswordError] = useState("");
+  // usestate for photo uploading
+  const [photoPreview, setPhotoPreview] = useState(null);
+
+  //show preview after selecting an image
+  const handleFileChange = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      setPhotoPreview(URL.createObjectURL(file));
+    }
+  };
 
   const { createUser } = useAuth();
   const navigate = useNavigate();
 
+  // handling the registration of user
   const handleRegister = async (event) => {
     event.preventDefault();
     const form = event.target;
     const name = form.name.value;
     const email = form.email.value;
     const password = form.password.value;
-    const photo = form.photo.value;
-    console.log(name, email, password, photo, confirm);
+    const file = form.photo.files[0]; // <-- uploaded file
 
+    console.log(name, email, password, file);
+
+    // validate as before...
     validatePassword(password);
     validateConfirmPassword(confirmPassword);
 
@@ -35,14 +48,15 @@ const Register = () => {
       const result = await createUser(email, password);
 
       if (result.user) {
-        const saveUser = { name, email };
+        // Upload photo file to backend or cloud storage
+        const formData = new FormData();
+        formData.append("photo", file);
+        formData.append("name", name);
+        formData.append("email", email);
 
         const response = await fetch(`${import.meta.env.VITE_API_URL}/users`, {
           method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(saveUser),
+          body: formData, // don't set Content-Type (browser handles it)
         });
 
         const data = await response.json();
@@ -63,6 +77,7 @@ const Register = () => {
     }
   };
 
+  // password validation for the input field
   const validatePassword = (password) => {
     const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*])(?=.{6,})/;
     if (!passwordRegex.test(password)) {
@@ -173,11 +188,20 @@ const Register = () => {
             </label>
             <input
               name="photo"
-              type="text"
-              id="photoURL"
+              type="file"
+              id="photo"
+              accept="image/*"
+              onChange={handleFileChange}
               className="w-full border border-gray-300 rounded-md py-2 px-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
               required
             />
+            {photoPreview && (
+              <img
+                src={photoPreview}
+                alt="Preview"
+                className="w-20 h-20 object-cover mt-2 rounded-md shadow-md"
+              />
+            )}
           </div>
           <button
             type="submit"

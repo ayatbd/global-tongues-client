@@ -16,9 +16,11 @@ const Navbar = () => {
   const { isDarkMode, toggleTheme } = useTheme();
   const [isOpen, setIsOpen] = useState(false);
 
+  // user navigation
   const Navigate = useNavigate();
   const location = useLocation();
 
+  // handling log out
   const handleLogOut = () => {
     logOut()
       .then(() => {
@@ -85,11 +87,14 @@ const Navbar = () => {
                     Contact Us
                   </NavLink>
                 </li>
-                <li>
-                  <NavLink to="/dashboard/home" className="font-bold">
-                    Dashboard
-                  </NavLink>
-                </li>
+                {user && (
+                  <li>
+                    <NavLink to="/dashboard/home" className="font-bold">
+                      Dashboard
+                    </NavLink>
+                  </li>
+                )}
+
                 {user ? (
                   <li>
                     <button className="font-bold" onClick={handleLogOut}>
@@ -167,11 +172,13 @@ const Navbar = () => {
                 <li>
                   <Link
                     to="/login"
-                    className={`text-red-500 hidden md:block font-medium py-2 px-4 rounded-md bg-indigo-600 hover:bg-indigo-700 ${
-                      isDarkMode && "bg-gray-900"
-                    }`}
+                    className="box-border hidden mr-3 relative z-30 md:inline-flex items-center justify-center w-auto px-8 py-3 overflow-hidden font-bold text-white transition-all duration-300 bg-blue-600 rounded-md cursor-pointer group ring-offset-2 ring-1 ring-indigo-300 ring-offset-indigo-200 hover:ring-offset-indigo-500 ease focus:outline-none"
                   >
-                    Login
+                    <span className="absolute bottom-0 right-0 w-8 h-20 -mb-8 -mr-5 transition-all duration-300 ease-out transform rotate-45 translate-x-1 bg-white opacity-10 group-hover:translate-x-0"></span>
+                    <span className="absolute top-0 left-0 w-20 h-8 -mt-1 -ml-12 transition-all duration-300 ease-out transform -rotate-45 -translate-x-1 bg-white opacity-10 group-hover:translate-x-0"></span>
+                    <span className="relative z-20 flex items-center text-sm">
+                      Login
+                    </span>
                   </Link>
                 </li>
               </ul>
@@ -279,12 +286,6 @@ const Navbar = () => {
                             Logout
                           </span>
                         </Link>
-                        {/* <button
-                      className="text-white flex justify-center items-center gap-3 font-medium py-2 px-6 rounded-full bg-indigo-600 hover:bg-indigo-700"
-                      onClick={handleLogOut}
-                    >
-                      <FaPowerOff className="w-4 h-4"></FaPowerOff> Logout
-                    </button> */}
                       </div>
                     </div>
                   )}
@@ -292,25 +293,29 @@ const Navbar = () => {
               </div>
             )}
             {isDarkMode ? (
-              <BsMoonStarsFill
-                className={`w-6 h-6 hover:cursor-pointer ${
-                  isDarkMode
-                    ? "text-white"
-                    : `${
-                        location.pathname === "/"
-                          ? "text-white"
-                          : "text-gray-900"
-                      }`
-                }`}
-                onClick={toggleTheme}
-              ></BsMoonStarsFill>
+              <span className="p-2 bg-primary rounded-md">
+                <BsFillBrightnessHighFill
+                  className={`w-6 h-6 hover:cursor-pointer ${
+                    isDarkMode
+                      ? "text-white"
+                      : `${
+                          location.pathname === "/"
+                            ? "text-white"
+                            : "text-gray-900"
+                        }`
+                  }`}
+                  onClick={toggleTheme}
+                ></BsFillBrightnessHighFill>
+              </span>
             ) : (
-              <BsFillBrightnessHighFill
-                className={`w-6 h-6 hover:cursor-pointer ${
-                  isDarkMode ? "text-white" : "text-gray-900"
-                }`}
-                onClick={toggleTheme}
-              ></BsFillBrightnessHighFill>
+              <span className="p-2 bg-primary rounded-md">
+                <BsMoonStarsFill
+                  className={`w-6 h-6 hover:cursor-pointer ${
+                    isDarkMode ? "text-white" : "text-gray-900"
+                  }`}
+                  onClick={toggleTheme}
+                ></BsMoonStarsFill>
+              </span>
             )}
           </div>
         </div>
