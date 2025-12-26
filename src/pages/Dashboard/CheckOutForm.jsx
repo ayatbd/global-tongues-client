@@ -132,7 +132,7 @@ const CheckOutForm = () => {
       <button
         type="submit"
         className=" mt-16 md:mt-24 py-1 rounded text-white font-kanit font-medium hover:bg-primary duration-300 text-sm w-[150px] mx-auto bg-blue-600"
-        // disabled={!stripe || !clientSecret || processing}
+        disabled={!stripe}
       >
         Pay
       </button>
