@@ -240,7 +240,7 @@ const Footer = () => {
                     href="mailto:info@company.com"
                     className={`hover:text-white transition`}
                   >
-                    info@company.com
+                    info@companybd.com
                   </a>
                 </p>
                 <p>
@@ -249,7 +249,7 @@ const Footer = () => {
                     href="tel:+11234567890"
                     className={`hover:text-white transition`}
                   >
-                    +1 (123) 456-7890
+                    +1 (123) 456-789
                   </a>
                 </p>
               </address>
