@@ -65,7 +65,7 @@ const Contact = () => {
                   className="inline-block pl-[0.15rem] hover:cursor-pointer"
                   htmlFor="exampleCheck96"
                 >
-                  Send me a copy of this message
+                  Send me a copy of the message
                 </label>
               </div>
               <button
@@ -105,10 +105,10 @@ const Contact = () => {
                       Technical support
                     </p>
                     <p className="text-neutral-500 dark:text-neutral-200">
-                      support@example.com
+                      supportbd@example.com
                     </p>
                     <p className="text-neutral-500 dark:text-neutral-200">
-                      +1 234-567-89
+                      +1 234-567-896
                     </p>
                   </div>
                 </div>
