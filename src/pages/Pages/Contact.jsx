@@ -105,11 +105,12 @@ const Contact = () => {
                       Technical support
                     </p>
                     <p className="text-neutral-500 dark:text-neutral-200">
-                      supportbd@example.com
+                      support@example.com
                     </p>
                     <p className="text-neutral-500 dark:text-neutral-200">
                       +1 234-567-896
                     </p>
+                    <p className="hidden">Emergency support</p>
                   </div>
                 </div>
               </div>
